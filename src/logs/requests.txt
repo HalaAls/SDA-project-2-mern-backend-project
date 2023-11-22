@@ -22,3 +22,19 @@ Method: POST, Path: /api/orders, Date: 9/19/2022, Time: 2:42:48 PM
 Method: POST, Path: /api/orders, Date: 9/19/2022, Time: 2:45:24 PM
 Method: GET, Path: /api/users, Date: 9/19/2022, Time: 2:48:09 PM
 Method: GET, Path: /api/users, Date: 9/19/2022, Time: 2:48:24 PM
+Method: GET, Path: /, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١٠:٢٠:٥٧ ص
+Method: GET, Path: /api/products, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١٠:٢٢:٢٥ ص
+Method: GET, Path: /api/products, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١٠:٣٠:٣٧ ص
+Method: GET, Path: /api/produc, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١٠:٣٦:٥٨ ص
+Method: GET, Path: /ap/produc, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١٠:٤١:٢٧ ص
+Method: GET, Path: /ap/produc, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١٠:٤٧:٢٨ ص
+Method: GET, Path: /ap/produc, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥١:٠٦ ص
+Method: GET, Path: /ap/produc, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٣:١٩ ص
+Method: POST, Path: /api/product, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٥:١٩ ص
+Method: POST, Path: /api/products, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٦:١٨ ص
+Method: POST, Path: /api/products, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٦:٣١ ص
+Method: GET, Path: /api/products/iphone-12, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٧:٥٠ ص
+Method: DELETE, Path: /api/products/iphone-12, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٨:١٥ ص
+Method: PUT, Path: /api/products/iphone-13, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٨:٤٨ ص
+Method: PUT, Path: /api/products/iphone-13, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٨:٥٨ ص
+Method: PUT, Path: /api/products/iphone-13, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٩:٠٨ ص
