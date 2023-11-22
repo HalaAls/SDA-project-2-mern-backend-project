@@ -7,7 +7,7 @@ import productsRouter from './routers/products'
 import ordersRouter from './routers/orders'
 import apiErrorHandler from './middlewares/errorHandler'
 import myLogger from './middlewares/logger'
-
+// just to test
 config()
 const app = express()
 const PORT = 5050
