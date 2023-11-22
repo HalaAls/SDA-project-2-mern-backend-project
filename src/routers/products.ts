@@ -1,31 +1,28 @@
-import express from 'express'
-const router = express.Router()
+import { Router } from 'express'
 
-import Product from '../models/product'
-import Order from '../models/order'
-import ApiError from '../errors/ApiError'
+import {
+  createProduct,
+  deleteProductBySlug,
+  getAllProducts,
+  getProductBySlug,
+  updateProductBySlug,
+} from '../controllers/productController'
 
-router.get('/', async (_, res) => {
-  const products = await Product.find()
-  console.log('products:', products)
-  res.json(products)
-})
+const router = Router()
 
-router.post('/', async (req, res, next) => {
-  const { name, description, quantity } = req.body
+// GET : /products -> return all products
+router.get('/', getAllProducts)
 
-  if (!name || !description) {
-    next(ApiError.badRequest('Name and Description are requried'))
-    return
-  }
-  const product = new Product({
-    name,
-    description,
-    quantity,
-  })
+// GET : /products/:slug -> return single product by slug
+router.get('/:slug', getProductBySlug)
 
-  await product.save()
-  res.json(product)
-})
+// DELETE : /products/:slug -> delete single product by slug
+router.delete('/:slug', deleteProductBySlug)
+
+// PUT : /products/:slug -> update product by slug
+router.put('/:slug', updateProductBySlug)
+
+// POST : /products -> create a new product
+router.post('/', createProduct)
 
 export default router

@@ -30,3 +30,11 @@ Method: GET, Path: /ap/produc, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١٠:٤١:
 Method: GET, Path: /ap/produc, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١٠:٤٧:٢٨ ص
 Method: GET, Path: /ap/produc, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥١:٠٦ ص
 Method: GET, Path: /ap/produc, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٣:١٩ ص
+Method: POST, Path: /api/product, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٥:١٩ ص
+Method: POST, Path: /api/products, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٦:١٨ ص
+Method: POST, Path: /api/products, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٦:٣١ ص
+Method: GET, Path: /api/products/iphone-12, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٧:٥٠ ص
+Method: DELETE, Path: /api/products/iphone-12, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٨:١٥ ص
+Method: PUT, Path: /api/products/iphone-13, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٨:٤٨ ص
+Method: PUT, Path: /api/products/iphone-13, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٨:٥٨ ص
+Method: PUT, Path: /api/products/iphone-13, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٩:٠٨ ص
