@@ -101,3 +101,6 @@ Method: POST, Path: /api/users/register, Date: 11/23/2023, Time: 3:44:43 PM
 Method: POST, Path: /api/users/register, Date: 11/23/2023, Time: 3:44:53 PM
 Method: POST, Path: /api/users/register, Date: 11/23/2023, Time: 3:48:50 PM
 Method: POST, Path: /api/users/register, Date: 11/23/2023, Time: 3:49:05 PM
+Method: POST, Path: /api/products, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٤:٤٣:٠٥ م
+Method: POST, Path: /api/products, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٤:٤٣:٥٢ م
+Method: POST, Path: /api/products, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٤:٤٧:٣٦ م

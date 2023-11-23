@@ -88,6 +88,7 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
       quantity: quantity,
       price: price,
       category: category,
+      image: req.file?.path,
     })
     await newProduct.save()
     res.status(201).send({ message: 'product is created' })

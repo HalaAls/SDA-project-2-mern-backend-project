@@ -45,7 +45,7 @@ const productSchema = new Schema(
     },
     image: {
       type: String,
-      default: '',
+      default: 'public/images/products/default.png',
     },
     category: { type: Schema.Types.ObjectId, ref: 'Category', required: true },
   },

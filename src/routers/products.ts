@@ -7,6 +7,7 @@ import {
   getProductBySlug,
   updateProductBySlug,
 } from '../controllers/productController'
+import { uploadImageProduct } from '../middlewares/uploadFile'
 
 const router = Router()
 
@@ -23,6 +24,6 @@ router.delete('/:slug', deleteProductBySlug)
 router.put('/:slug', updateProductBySlug)
 
 // POST : /products -> create a new product
-router.post('/', createProduct)
+router.post('/', uploadImageProduct.single('image'), createProduct)
 
 export default router
