@@ -69,3 +69,27 @@ Method: POST, Path: /api/products, Date: 11/23/2023, Time: 1:32:59 AM
 Method: POST, Path: /api/products, Date: 11/23/2023, Time: 1:33:19 AM
 Method: POST, Path: /api/products, Date: 11/23/2023, Time: 1:33:32 AM
 Method: GET, Path: /api/products, Date: 11/23/2023, Time: 1:33:39 AM
+Method: DELETE, Path: /api/products/655f27e413dfdf836daa5ddd, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ١:٤١:٢٤ م
+Method: GET, Path: /api/products/655f27e413dfdf836daa5ddd, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ١:٤١:٥٢ م
+Method: DELETE, Path: /api/products/655f27e413dfdf836daa5ddd, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ١:٤٣:١٤ م
+Method: DELETE, Path: /api/categories/655f27e413dfdf836daa5ddd, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ١:٤٣:٤٧ م
+Method: DELETE, Path: /api/categories/655f27e413dfdf836daa5ddd, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ١:٤٤:٥٢ م
+Method: DELETE, Path: /api/products/655f27e413dfdf836daa5ddd, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ١:٤٦:٠٤ م
+Method: DELETE, Path: /api/categories/655f27e413dfdf836daa5ddd, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ١:٤٧:٢٤ م
+Method: DELETE, Path: /api/categories/655f27e413dfdf836daa5ddd, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ١:٤٩:٥٥ م
+Method: DELETE, Path: /api/categories/655df733460c1347430f41d7, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ١:٥٠:٢٦ م
+Method: POST, Path: /api/categories, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:٠٢:٣١ م
+Method: PUT, Path: /api/categories/655f3147827444d5d1b3a172, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:٠٣:٠٧ م
+Method: PUT, Path: /api/categories/655f3147827444d5d1b3a172, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:٠٣:٤٨ م
+Method: PUT, Path: /api/categories/655f3147827444d5d1b3a172, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:٠٥:٠٣ م
+Method: PUT, Path: /api/categories/655f3147827444d5d1b3a172, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:٠٥:٢٤ م
+Method: PUT, Path: /api/products/phone-33, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:١٤:٠٥ م
+Method: PUT, Path: /api/products/phone-33, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:١٥:١١ م
+Method: PUT, Path: /api/products/phone-33, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:١٥:٥٩ م
+Method: PUT, Path: /api/products/phone-33, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:١٦:٣٨ م
+Method: PUT, Path: /api/products/phone-33, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:١٧:٥٨ م
+Method: PUT, Path: /api/products/phone-33, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:١٩:٢٠ م
+Method: PUT, Path: /api/products/phone-33, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:٢٤:٣٠ م
+Method: POST, Path: /api/products, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:٢٧:٢٧ م
+Method: GET, Path: /api/products, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:٢٧:٣٤ م
+Method: PUT, Path: /api/products/iphone, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:٢٨:١٥ م

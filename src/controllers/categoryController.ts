@@ -7,13 +7,15 @@ import { createHttpError } from '../util/createHttpError'
 import {
   findCategoryById,
   findCategoryBySlug,
+  removeCategoryById,
   removeCategoryBySlug,
+  updateCategory,
 } from '../services/categoryService'
 
 export const getAllCategories = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const categories: ICategory[] = await Category.find()
-    res.send({
+    res.status(200).send({
       message: 'return all the categoties',
       payload: categories,
     })
@@ -31,7 +33,7 @@ export const getCategoryById = async (req: Request, res: Response, next: NextFun
   try {
     const id = req.params.id
     const category = await findCategoryById(id)
-    res.send({
+    res.status(200).send({
       message: 'return single product',
       payload: category,
     })
@@ -44,7 +46,7 @@ export const getCategoryBySlug = async (req: Request, res: Response, next: NextF
   try {
     const slug = req.params.slug
     const category = await findCategoryBySlug(slug)
-    res.send({
+    res.status(200).send({
       message: 'return single category',
       payload: category,
     })
@@ -78,12 +80,8 @@ export const createNewCategory = async (req: Request, res: Response, next: NextF
 export const deleteCategoryById = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const id = req.params.id
-    const responce = await Category.findByIdAndDelete(id)
-    if (!responce) {
-      const error = createHttpError(404, 'Id does not exist')
-      throw error
-    }
-    res.json({
+    const responce = await removeCategoryById(id)
+    res.status(200).send({
       message: 'category is deleted',
     })
   } catch (error) {
@@ -95,7 +93,7 @@ export const deleteCategoryBySlug = async (req: Request, res: Response, next: Ne
   try {
     const requestedSlug = req.params.slug
     const responce = await removeCategoryBySlug(requestedSlug)
-    res.json({
+    res.status(200).send({
       message: 'product is deleted',
       payload: responce,
     })
@@ -114,15 +112,9 @@ export const updateCategoryById = async (req: Request, res: Response, next: Next
       req.body.slug = slugify(updatedTitle)
     }
 
-    const category = await Category.findByIdAndUpdate(id, updatedCategory, {
-      new: true,
-    })
+    const category = await updateCategory(id, updatedCategory)
 
-    if (!category) {
-      const error = createHttpError(404, 'category does not exist with this id')
-      throw error
-    }
-    res.json({
+    res.status(200).send({
       message: 'return the updated category',
       payload: category,
     })
@@ -147,7 +139,7 @@ export const updateCategoryBySlug = async (req: Request, res: Response, next: Ne
       const error = createHttpError(404, 'category does not exist with this slug')
       throw error
     }
-    res.send({
+    res.status(200).send({
       message: 'return the updated products',
       payload: category,
     })
