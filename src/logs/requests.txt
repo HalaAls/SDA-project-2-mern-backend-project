@@ -93,3 +93,11 @@ Method: PUT, Path: /api/products/phone-33, Date: ٩‏/٥‏/١٤٤٥ هـ, Time
 Method: POST, Path: /api/products, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:٢٧:٢٧ م
 Method: GET, Path: /api/products, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:٢٧:٣٤ م
 Method: PUT, Path: /api/products/iphone, Date: ٩‏/٥‏/١٤٤٥ هـ, Time: ٢:٢٨:١٥ م
+Method: GET, Path: /api/users, Date: 11/23/2023, Time: 3:40:49 PM
+Method: GET, Path: /api/users, Date: 11/23/2023, Time: 3:41:32 PM
+Method: POST, Path: /users/register, Date: 11/23/2023, Time: 3:43:33 PM
+Method: POST, Path: /api/users/register, Date: 11/23/2023, Time: 3:43:48 PM
+Method: POST, Path: /api/users/register, Date: 11/23/2023, Time: 3:44:43 PM
+Method: POST, Path: /api/users/register, Date: 11/23/2023, Time: 3:44:53 PM
+Method: POST, Path: /api/users/register, Date: 11/23/2023, Time: 3:48:50 PM
+Method: POST, Path: /api/users/register, Date: 11/23/2023, Time: 3:49:05 PM
