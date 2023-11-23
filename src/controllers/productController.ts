@@ -3,12 +3,7 @@ import slugify from 'slugify'
 
 import { Product, ProductInterface } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
-import {
-  findProductsBySlug,
-  getProducts,
-  removeProductsBySlug,
-  updateProduct,
-} from '../services/productService'
+import { findProductsBySlug, getProducts, removeProductsBySlug } from '../services/productService'
 
 export const getAllProducts = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -58,12 +53,15 @@ export const deleteProductBySlug = async (req: Request, res: Response, next: Nex
 
 export const updateProductBySlug = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const name = req.body.name
-    const slug = req.params.slug
-    const updatedProduct = req.body
+    if (req.body.name) req.body.slug = slugify(req.body.name)
+    const product = await Product.findOneAndUpdate({ slug: req.params.slug }, req.body, {
+      new: true,
+    })
 
-    if (name) req.body.slug = slugify(name)
-    const product = await updateProduct(slug, updatedProduct)
+    if (!product) {
+      const error = createHttpError(404, 'Product not found')
+      throw error
+    }
 
     res.send({ message: 'product is updated', payload: product })
   } catch (error) {
@@ -73,7 +71,7 @@ export const updateProductBySlug = async (req: Request, res: Response, next: Nex
 
 export const createProduct = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { name, description, quantity, price, category } = req.body
+    const { name, description, quantity, price } = req.body
 
     const productExist = await Product.exists({ name: name })
     if (productExist) {
@@ -87,7 +85,6 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
       description: description,
       quantity: quantity,
       price: price,
-      category: category,
     })
     await newProduct.save()
     res.status(201).send({ message: 'product is created' })
