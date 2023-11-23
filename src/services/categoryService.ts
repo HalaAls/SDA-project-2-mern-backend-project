@@ -2,6 +2,7 @@ import { Category, ICategory } from '../models/category'
 import { createHttpError } from '../util/createHttpError'
 // test 1
 // test 2
+// test 3
 export const findCategoryById = async (id: string): Promise<ICategory> => {
   const category = await Category.findOne({ _id: id })
   if (!category) {
