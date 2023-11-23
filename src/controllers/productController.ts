@@ -71,7 +71,7 @@ export const updateProductBySlug = async (req: Request, res: Response, next: Nex
 
 export const createProduct = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { name, description, quantity, price } = req.body
+    const { name, description, quantity, price, category } = req.body
 
     const productExist = await Product.exists({ name: name })
     if (productExist) {
@@ -85,6 +85,7 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
       description: description,
       quantity: quantity,
       price: price,
+      category: category,
     })
     await newProduct.save()
     res.status(201).send({ message: 'product is created' })

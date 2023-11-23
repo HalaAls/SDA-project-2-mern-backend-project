@@ -1,4 +1,5 @@
 import { Schema, model, Document } from 'mongoose'
+import { ICategory } from './category'
 
 export interface ProductInterface extends Document {
   name: string
@@ -6,7 +7,7 @@ export interface ProductInterface extends Document {
   description: string
   quantity: number
   price: number
-  // category: CategoryInterface['_id']
+  category: ICategory['_id']
   createdAt?: string
   updatedAt?: string
 }
@@ -42,6 +43,7 @@ const productSchema = new Schema(
       required: true,
       trim: true,
     },
+    category: { type: Schema.Types.ObjectId, ref: 'Category', required: true },
   },
   { timestamps: true }
 )

@@ -38,3 +38,34 @@ Method: DELETE, Path: /api/products/iphone-12, Date: ٨‏/٥‏/١٤٤٥ هـ, 
 Method: PUT, Path: /api/products/iphone-13, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٨:٤٨ ص
 Method: PUT, Path: /api/products/iphone-13, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٨:٥٨ ص
 Method: PUT, Path: /api/products/iphone-13, Date: ٨‏/٥‏/١٤٤٥ هـ, Time: ١١:١٩:٠٨ ص
+Method: GET, Path: /, Date: 11/23/2023, Time: 1:11:44 AM
+Method: GET, Path: /products, Date: 11/23/2023, Time: 1:12:17 AM
+Method: GET, Path: /api/products, Date: 11/23/2023, Time: 1:12:40 AM
+Method: GET, Path: /api/products, Date: 11/23/2023, Time: 1:23:50 AM
+Method: GET, Path: /api/categories, Date: 11/23/2023, Time: 1:24:07 AM
+Method: GET, Path: /api/categories, Date: 11/23/2023, Time: 1:24:25 AM
+Method: POST, Path: /api/categories, Date: 11/23/2023, Time: 1:25:07 AM
+Method: GET, Path: /api/categories, Date: 11/23/2023, Time: 1:25:11 AM
+Method: POST, Path: /api/categories, Date: 11/23/2023, Time: 1:25:31 AM
+Method: POST, Path: /api/categories, Date: 11/23/2023, Time: 1:25:38 AM
+Method: GET, Path: /api/, Date: 11/23/2023, Time: 1:25:43 AM
+Method: GET, Path: /api/categories, Date: 11/23/2023, Time: 1:25:49 AM
+Method: GET, Path: /api/categories/tablet, Date: 11/23/2023, Time: 1:26:04 AM
+Method: PUT, Path: /api/categories/tablet, Date: 11/23/2023, Time: 1:26:19 AM
+Method: DELETE, Path: /api/categories/tablet, Date: 11/23/2023, Time: 1:26:25 AM
+Method: GET, Path: /api/categories/tablet, Date: 11/23/2023, Time: 1:26:29 AM
+Method: GET, Path: /api/categories, Date: 11/23/2023, Time: 1:26:36 AM
+Method: GET, Path: /api/categories, Date: 11/23/2023, Time: 1:26:41 AM
+Method: GET, Path: /api/categories, Date: 11/23/2023, Time: 1:28:26 AM
+Method: DELETE, Path: /api/categories/tablet, Date: 11/23/2023, Time: 1:28:55 AM
+Method: DELETE, Path: /api/categories/tablets, Date: 11/23/2023, Time: 1:29:03 AM
+Method: GET, Path: /api/categories/tablets, Date: 11/23/2023, Time: 1:29:09 AM
+Method: GET, Path: /api/categories/, Date: 11/23/2023, Time: 1:29:12 AM
+Method: GET, Path: /api/categories, Date: 11/23/2023, Time: 1:29:14 AM
+Method: POST, Path: /api/products, Date: 11/23/2023, Time: 1:30:06 AM
+Method: POST, Path: /api/products, Date: 11/23/2023, Time: 1:30:29 AM
+Method: POST, Path: /api/products, Date: 11/23/2023, Time: 1:32:36 AM
+Method: POST, Path: /api/products, Date: 11/23/2023, Time: 1:32:59 AM
+Method: POST, Path: /api/products, Date: 11/23/2023, Time: 1:33:19 AM
+Method: POST, Path: /api/products, Date: 11/23/2023, Time: 1:33:32 AM
+Method: GET, Path: /api/products, Date: 11/23/2023, Time: 1:33:39 AM
