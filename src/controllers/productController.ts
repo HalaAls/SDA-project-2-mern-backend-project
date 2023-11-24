@@ -10,8 +10,16 @@ export const getAllProducts = async (req: Request, res: Response, next: NextFunc
   try {
     let page = Number(req.query.page) || 1
     const limit = Number(req.query.limit) || 3
-
-    const { products, totalPages, currentPage } = await getProducts(page, limit)
+    const minPrice = Number(req.query.minPrice) || 0
+    const maxPrice = Number(req.query.maxPrice) || Number.MAX_VALUE
+    const category = req.query.category as string
+    const { products, totalPages, currentPage } = await getProducts(
+      page,
+      limit,
+      minPrice,
+      maxPrice,
+      category
+    )
 
     res.send({
       message: 'get all the products',

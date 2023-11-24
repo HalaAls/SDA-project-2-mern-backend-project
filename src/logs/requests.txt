@@ -21,8 +21,13 @@ Method: GET, Path: /api/orders, Date: 9/19/2022, Time: 2:34:50 PM
 Method: POST, Path: /api/orders, Date: 9/19/2022, Time: 2:42:48 PM
 Method: POST, Path: /api/orders, Date: 9/19/2022, Time: 2:45:24 PM
 Method: GET, Path: /api/users, Date: 9/19/2022, Time: 2:48:09 PM
+
+Method: GET, Path: /api/users, Date: 9/19/2022, Time: 2:48:24 PM
+=======
 Method: GET, Path: /api/users, Date: 9/19/2022, Time: 2:48:24 PM
 Method: PUT, Path: /api/products/iphone-8, Date: 11/24/2023, Time: 5:20:53 PM
 Method: PUT, Path: /api/products/iphone-15, Date: 11/24/2023, Time: 5:21:08 PM
 Method: PUT, Path: /api/products/iphone-15, Date: 11/24/2023, Time: 5:21:22 PM
 Method: PUT, Path: /api/products/iphone-15, Date: 11/24/2023, Time: 5:21:51 PM
+Method: GET, Path: /api/products, Date: 11/24/2023, Time: 6:23:33 PM
+Method: GET, Path: /api/products, Date: 11/24/2023, Time: 6:23:42 PM
