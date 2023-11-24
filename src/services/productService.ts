@@ -1,3 +1,4 @@
+//productService.ts
 import { Product, ProductInterface } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
 
@@ -44,12 +45,9 @@ export const updateProduct = async (
   slug: string,
   updatedProduct: ProductInterface
 ): Promise<ProductInterface> => {
-  console.log(updatedProduct)
-
   const product = await Product.findOneAndUpdate({ slug }, updatedProduct, {
     new: true,
   })
-  console.log(product)
 
   if (!product) {
     const error = createHttpError(404, 'Product not found')

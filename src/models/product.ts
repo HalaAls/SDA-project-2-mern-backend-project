@@ -1,3 +1,4 @@
+//productModel.ts
 import { Schema, model, Document } from 'mongoose'
 import { ICategory } from './category'
 

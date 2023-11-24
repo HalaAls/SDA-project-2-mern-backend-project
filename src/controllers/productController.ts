@@ -1,3 +1,4 @@
+//productController.ts
 import { NextFunction, Request, Response } from 'express'
 import slugify from 'slugify'
 
@@ -57,12 +58,12 @@ export const deleteProductBySlug = async (req: Request, res: Response, next: Nex
 }
 
 export const updateProductBySlug = async (req: Request, res: Response, next: NextFunction) => {
-  try {
+  try { 
     const name = req.body.name
     const slug = req.params.slug
-    const updatedProduct = req.body
+    const updatedProduct = { ...req.body, image: req.file?.path };
 
-    if (name) req.body.slug = slugify(name)
+    if (name) req.body.slug = slugify(name);  
     const product = await updateProduct(slug, updatedProduct)
 
     res.send({ message: 'product is updated', payload: product })

@@ -1,3 +1,4 @@
+//productsRouter.ts
 import { Router } from 'express'
 
 import {
@@ -21,7 +22,7 @@ router.get('/:slug', getProductBySlug)
 router.delete('/:slug', deleteProductBySlug)
 
 // PUT : /products/:slug -> update product by slug
-router.put('/:slug', updateProductBySlug)
+router.put('/:slug',uploadImageProduct.single('image'), updateProductBySlug)
 
 // POST : /products -> create a new product
 router.post('/', uploadImageProduct.single('image'), createProduct)
