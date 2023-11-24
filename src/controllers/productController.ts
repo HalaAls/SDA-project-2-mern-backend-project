@@ -1,10 +1,16 @@
 //productController.ts
 import { NextFunction, Request, Response } from 'express'
 import slugify from 'slugify'
+import { validationResult } from 'express-validator'
 
 import { Product, ProductInterface } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
-import { findProductsBySlug, getProducts, removeProductsBySlug, updateProduct } from '../services/productService'
+import {
+  findProductsBySlug,
+  getProducts,
+  removeProductsBySlug,
+  updateProduct,
+} from '../services/productService'
 
 export const getAllProducts = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -61,12 +67,20 @@ export const deleteProductBySlug = async (req: Request, res: Response, next: Nex
 }
 
 export const updateProductBySlug = async (req: Request, res: Response, next: NextFunction) => {
-  try { 
+  try {
     const name = req.body.name
     const slug = req.params.slug
-    const updatedProduct = { ...req.body, image: req.file?.path };
+    if (name) req.body.slug = slugify(name)
 
-    if (name) req.body.slug = slugify(name);  
+    const updatedProduct = { ...req.body, image: req.file?.path }
+
+    // Validation checks using express-validator
+    const errors = validationResult(req)
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+    }
+
     const product = await updateProduct(slug, updatedProduct)
 
     res.send({ message: 'product is updated', payload: product })
@@ -83,6 +97,12 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
     if (productExist) {
       const error = createHttpError(409, 'Product already exists with this name')
       throw error
+    }
+    // Validation checks using express-validator
+    const errors = validationResult(req)
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
     }
 
     const newProduct: ProductInterface = new Product({

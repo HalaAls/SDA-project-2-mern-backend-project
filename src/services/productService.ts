@@ -25,13 +25,13 @@ export const getProducts = async (
   if (page > totalPages) {
     page = totalPages
   }
-   if (minPrice && maxPrice) {
-     filterProduct.price = { $gte: minPrice, $lte: maxPrice }
-   } else if (minPrice) {
-     filterProduct.price = { $gte: minPrice }
-   } else if (maxPrice) {
-     filterProduct.price = { $lte: maxPrice }
-   }
+  if (minPrice && maxPrice) {
+    filterProduct.price = { $gte: minPrice, $lte: maxPrice }
+  } else if (minPrice) {
+    filterProduct.price = { $gte: minPrice }
+  } else if (maxPrice) {
+    filterProduct.price = { $lte: maxPrice }
+  }
 
   if (category) {
     filterProduct.category = category
