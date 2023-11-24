@@ -9,8 +9,16 @@ export const getAllProducts = async (req: Request, res: Response, next: NextFunc
   try {
     let page = Number(req.query.page) || 1
     const limit = Number(req.query.limit) || 3
-
-    const { products, totalPages, currentPage } = await getProducts(page, limit)
+    const minPrice = Number(req.query.minPrice) || 0
+    const maxPrice = Number(req.query.maxPrice) || Number.MAX_VALUE
+    const category = req.query.category as string
+    const { products, totalPages, currentPage } = await getProducts(
+      page,
+      limit,
+      minPrice,
+      maxPrice,
+      category
+    )
 
     res.send({
       message: 'get all the products',
@@ -71,7 +79,8 @@ export const updateProductBySlug = async (req: Request, res: Response, next: Nex
 
 export const createProduct = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { name, description, quantity, price } = req.body
+    const { name, description, quantity, price, category } = req.body
+    const image = req.file?.path
 
     const productExist = await Product.exists({ name: name })
     if (productExist) {
@@ -85,6 +94,8 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
       description: description,
       quantity: quantity,
       price: price,
+      category: category,
+      image: image,
     })
     await newProduct.save()
     res.status(201).send({ message: 'product is created' })

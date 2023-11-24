@@ -2,7 +2,7 @@ import express, { Application } from 'express'
 import morgan from 'morgan'
 
 import { dev } from './config'
-// import usersRouter from './routers/users'
+import usersRouter from './routers/users'
 import productsRouter from './routers/products'
 import ordersRouter from './routers/orders'
 import categoryRouter from './routers/category'
@@ -23,8 +23,7 @@ app.use(express.json())
 app.use('/api/products', productsRouter)
 app.use('/api/orders', ordersRouter)
 app.use('/api/categories', categoryRouter)
-
-// app.use('/api/users', usersRouter)
+app.use('/api/users', usersRouter)
 
 
 app.listen(PORT, () => {
