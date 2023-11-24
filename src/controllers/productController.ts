@@ -4,7 +4,7 @@ import slugify from 'slugify'
 
 import { Product, ProductInterface } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
-import { findProductsBySlug, getProducts, removeProductsBySlug } from '../services/productService'
+import { findProductsBySlug, getProducts, removeProductsBySlug, updateProduct } from '../services/productService'
 
 export const getAllProducts = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -69,7 +69,7 @@ export const updateProductBySlug = async (req: Request, res: Response, next: Nex
 
 export const createProduct = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { name, description, quantity, price } = req.body
+    const { name, description, quantity, price, category } = req.body
 
     const productExist = await Product.exists({ name: name })
     if (productExist) {
