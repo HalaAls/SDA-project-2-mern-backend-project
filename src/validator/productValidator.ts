@@ -1,6 +1,5 @@
 //productValidator.ts
-import { check , ValidationChain} from "express-validator";
-
+import { check, ValidationChain } from 'express-validator'
 
 export const createProductValidator: ValidationChain[] = [
   check('name')
@@ -33,7 +32,7 @@ export const createProductValidator: ValidationChain[] = [
     .withMessage('Category is required')
     .isMongoId()
     .withMessage('Invalid category ID'),
-];
+]
 
 export const updateProductValidator: ValidationChain[] = [
   check('name')
@@ -42,7 +41,7 @@ export const updateProductValidator: ValidationChain[] = [
     .withMessage('Product Name is required')
     .isLength({ min: 3, max: 200 })
     .withMessage('Product Name should be at least 3-200 characters long'),
-    check('description')
+  check('description')
     .optional()
     .trim()
     .notEmpty()
@@ -63,12 +62,11 @@ export const updateProductValidator: ValidationChain[] = [
     .withMessage('Price is required')
     .isFloat({ min: 1 })
     .withMessage('Price must be a positive number'),
-    check('category')
+  check('category')
     .optional()
     .trim()
     .notEmpty()
     .withMessage('Category is required')
     .isMongoId()
     .withMessage('Invalid category ID'),
-];
-
+]
