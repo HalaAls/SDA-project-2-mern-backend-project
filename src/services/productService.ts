@@ -1,3 +1,4 @@
+//productService.ts
 import { Product, ProductInterface } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
 
@@ -6,7 +7,7 @@ interface IProductFilter {
     $gte?: number
     $lte?: number
   }
-  category?: string
+  category?: string // Add this line
 }
 
 export const getProducts = async (
@@ -63,5 +64,21 @@ export const removeProductsBySlug = async (slug: string) => {
   if (!product) {
     throw createHttpError(404, 'Product Not found')
   }
+  return product
+}
+
+export const updateProduct = async (
+  slug: string,
+  updatedProduct: ProductInterface
+): Promise<ProductInterface> => {
+  const product = await Product.findOneAndUpdate({ slug }, updatedProduct, {
+    new: true,
+  })
+
+  if (!product) {
+    const error = createHttpError(404, 'Product not found')
+    throw error
+  }
+
   return product
 }
