@@ -1,3 +1,4 @@
+//productModel.ts
 import { Schema, model, Document } from 'mongoose'
 import { ICategory } from './category'
 
@@ -42,6 +43,10 @@ const productSchema = new Schema(
       type: Number,
       required: true,
       trim: true,
+    },
+    image: {
+      type: String,
+      default: 'public/images/products/default.png',
     },
     category: { type: Schema.Types.ObjectId, ref: 'Category', required: true },
   },

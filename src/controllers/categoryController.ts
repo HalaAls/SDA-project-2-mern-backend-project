@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express'
 import slugify from 'slugify'
 import mongoose from 'mongoose'
 

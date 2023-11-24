@@ -1,3 +1,4 @@
+//productController.ts
 import { NextFunction, Request, Response } from 'express'
 import slugify from 'slugify'
 
@@ -52,16 +53,13 @@ export const deleteProductBySlug = async (req: Request, res: Response, next: Nex
 }
 
 export const updateProductBySlug = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    if (req.body.name) req.body.slug = slugify(req.body.name)
-    const product = await Product.findOneAndUpdate({ slug: req.params.slug }, req.body, {
-      new: true,
-    })
+  try { 
+    const name = req.body.name
+    const slug = req.params.slug
+    const updatedProduct = { ...req.body, image: req.file?.path };
 
-    if (!product) {
-      const error = createHttpError(404, 'Product not found')
-      throw error
-    }
+    if (name) req.body.slug = slugify(name);  
+    const product = await updateProduct(slug, updatedProduct)
 
     res.send({ message: 'product is updated', payload: product })
   } catch (error) {
@@ -85,6 +83,8 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
       description: description,
       quantity: quantity,
       price: price,
+      category: category,
+      image: req.file?.path,
     })
     await newProduct.save()
     res.status(201).send({ message: 'product is created' })

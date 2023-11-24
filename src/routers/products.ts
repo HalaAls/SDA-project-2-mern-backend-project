@@ -1,3 +1,4 @@
+//productsRouter.ts
 import { Router } from 'express'
 
 import {
@@ -7,6 +8,7 @@ import {
   getProductBySlug,
   updateProductBySlug,
 } from '../controllers/productController'
+import { uploadImageProduct } from '../middlewares/uploadFile'
 
 const router = Router()
 
@@ -20,9 +22,9 @@ router.get('/:slug', getProductBySlug)
 router.delete('/:slug', deleteProductBySlug)
 
 // PUT : /products/:slug -> update product by slug
-router.put('/:slug', updateProductBySlug)
+router.put('/:slug',uploadImageProduct.single('image'), updateProductBySlug)
 
 // POST : /products -> create a new product
-router.post('/', createProduct)
+router.post('/', uploadImageProduct.single('image'), createProduct)
 
 export default router
