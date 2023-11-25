@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import fs from 'fs/promises'
 import jwt from 'jsonwebtoken'
 
 import User from '../models/user'
@@ -93,6 +94,11 @@ export const deleteUser = async (req: Request, res: Response, next: NextFunction
 
     const user = await User.findOneAndDelete(email)
 
+    // to delete the old image from the public folder
+    if (user?.image !== 'public/images/users/default.png') {
+      user && fs.unlink(user.image)
+    }
+
     if (!user) {
       throw createHttpError(404, `User not found with the email ${email}`)
     }
@@ -114,6 +120,11 @@ export const updateUserByEmail = async (req: Request, res: Response, next: NextF
     if (emailExists) {
       throw createHttpError(409, 'Email already exists')
     }
+
+    // to delete the old image from the public folder
+    const prevUserData = await User.findOne({ email })
+    if (req.file?.path && prevUserData?.image !== 'public/images/users/default.png')
+      prevUserData && fs.unlink(prevUserData.image)
 
     const user = await User.findOneAndUpdate({ email }, updatedUser, {
       new: true,
