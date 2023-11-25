@@ -20,11 +20,13 @@ export const getAllProducts = async (req: Request, res: Response, next: NextFunc
     const minPrice = Number(req.query.minPrice) || 0
     const maxPrice = Number(req.query.maxPrice) || Number.MAX_VALUE
     const category = req.query.category as string
+    const sort = req.query.sort as string
     const { products, totalPages, currentPage } = await getProducts(
       page,
       limit,
       minPrice,
       maxPrice,
+      sort,
       category
     )
 

@@ -1,4 +1,5 @@
-//productService.ts
+import { CollationOptions } from 'mongodb'
+
 import { Product, ProductInterface } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
 
@@ -15,12 +16,14 @@ export const getProducts = async (
   limit = 3,
   minPrice: number,
   maxPrice: number,
+  sort: string,
   category?: string
 ) => {
   // to count products
   const count = await Product.countDocuments()
   const totalPages = Math.ceil(count / limit)
   let filterProduct: IProductFilter = {}
+  let sortOption = {}
 
   if (page > totalPages) {
     page = totalPages
@@ -36,12 +39,25 @@ export const getProducts = async (
   if (category) {
     filterProduct.category = category
   }
+
+  if (sort === 'title') {
+    sortOption = { name: 1 }
+  } else if (sort === 'dateAdded') {
+    sortOption = { createdAt: -1 }
+  }
+
   const skip = (page - 1) * limit
 
   const products: ProductInterface[] = await Product.find(filterProduct)
     .skip(skip)
     .populate('category')
     .limit(limit)
+    // Add collation option for case-insensitive sorting
+    .collation({
+      locale: 'en',
+      strength: 2,
+    })
+    .sort(sortOption)
 
   return {
     products,
