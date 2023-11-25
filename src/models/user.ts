@@ -1,8 +1,8 @@
 import { Schema, model, Document } from 'mongoose'
-import bcrypt from 'bcrypt'
 
+import { dev } from '../config'
 export interface IUser extends Document {
-  name: string 
+  name: string
   email: string
   password: string
   image: string
@@ -39,11 +39,10 @@ const userSchema = new Schema<IUser>(
       required: [true, 'Please give the password'],
       trim: true,
       minlength: [6, 'The password must be at least 6 characters long'],
-      set: (password: string) => bcrypt.hashSync(password, 10),
     },
     image: {
       type: String,
-      default: 'public/images/users/default.png',
+      default: dev.app.defaultImagePath,
     },
     address: {
       type: String,
