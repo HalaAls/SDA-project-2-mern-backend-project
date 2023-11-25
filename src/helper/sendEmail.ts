@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer'
+
 import { dev } from '../config'
 import { EmailDataType } from '../types'
 

@@ -15,7 +15,6 @@ import { errorHandler } from './middlewares/errorHandler'
 import { connectDB } from './config/db'
 import { createHttpError } from './util/createHttpError'
 
-
 const app: Application = express()
 const PORT: number = dev.app.port
 
