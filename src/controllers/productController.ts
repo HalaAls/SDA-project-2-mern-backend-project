@@ -2,6 +2,7 @@
 import { NextFunction, Request, Response } from 'express'
 import slugify from 'slugify'
 import { validationResult } from 'express-validator'
+import fs from 'fs/promises'
 
 import { Product, ProductInterface } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
@@ -57,6 +58,12 @@ export const deleteProductBySlug = async (req: Request, res: Response, next: Nex
   try {
     const slug = req.params.slug
     const product = await removeProductsBySlug(slug)
+
+    // to delete the old image from the public folder
+    if (product?.image !== 'public/images/products/default.png') {
+      product && fs.unlink(product.image)
+    }
+
     res.send({
       message: 'single product is deleted',
       payload: product,
@@ -76,6 +83,11 @@ export const updateProductBySlug = async (req: Request, res: Response, next: Nex
 
     // Validation checks using express-validator
     const errors = validationResult(req)
+
+    // to delete the old image from the public folder
+    const prevProduct = await findProductsBySlug(slug)
+    if (req.file?.path && prevProduct.image !== 'public/images/products/default.png')
+      fs.unlink(prevProduct.image)
 
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() })

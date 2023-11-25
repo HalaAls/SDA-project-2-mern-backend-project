@@ -8,6 +8,7 @@ export interface ProductInterface extends Document {
   description: string
   quantity: number
   price: number
+  image: string
   category: ICategory['_id']
   createdAt?: string
   updatedAt?: string
