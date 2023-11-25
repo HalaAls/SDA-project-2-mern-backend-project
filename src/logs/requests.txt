@@ -149,3 +149,19 @@ Method: GET, Path: /api/products, Date: ١١‏/٥‏/١٤٤٥ هـ, Time: ٥:٢
 Method: GET, Path: /api/products, Date: ١١‏/٥‏/١٤٤٥ هـ, Time: ٥:٢٥:١٩ ص
 Method: GET, Path: /api/products, Date: ١١‏/٥‏/١٤٤٥ هـ, Time: ٥:٢٥:٥٤ ص
 Method: GET, Path: /api/products, Date: ١١‏/٥‏/١٤٤٥ هـ, Time: ٥:٢٦:٠٦ ص
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 1:12:26 AM
+Method: GET, Path: /users/activate/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQW1hbCIsImVtYWlsIjoia2F3ZXdlOTgxNEBtYWlub2ouY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkU1oudU1SZXBsYWxsV0o3Sm51U1pNdW9NYjVpeGcuN3hxeDRjcjRHL1RyUlh5a2F1LkFwWksiLCJhZGRyZXNzIjoiMTIzIGplZGRhaCIsInBob25lIjoiMDUzNDU0MzI3OCIsImltYWdlIjoicHVibGljXFxpbWFnZXNcXHVzZXJzXFwxNzAwOTUwMzQ2MTI1LWhlcm8taW1nLnBuZyIsImlhdCI6MTcwMDk1MDM0NiwiZXhwIjoxNzAwOTUwOTQ2fQ.qv0lvrbomF_c7MTpdil9p7TM8o-aiFBROiXS_PQenOk, Date: 11/26/2023, Time: 1:13:21 AM
+Method: GET, Path: /favicon.ico, Date: 11/26/2023, Time: 1:13:21 AM
+Method: POST, Path: /api/users/activate/, Date: 11/26/2023, Time: 1:23:19 AM
+Method: POST, Path: /api/users/activate/, Date: 11/26/2023, Time: 1:28:12 AM
+Method: POST, Path: /api/users/activate/, Date: 11/26/2023, Time: 1:30:27 AM
+Method: POST, Path: /api/users/activate/, Date: 11/26/2023, Time: 1:30:32 AM
+Method: POST, Path: /api/users/activate/, Date: 11/26/2023, Time: 1:33:07 AM
+Method: POST, Path: /api/users/activate/, Date: 11/26/2023, Time: 1:34:16 AM
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 1:34:25 AM
+Method: POST, Path: /api/users/activate/, Date: 11/26/2023, Time: 1:34:40 AM
+Method: POST, Path: /api/users/activate/, Date: 11/26/2023, Time: 1:43:55 AM
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 1:44:14 AM
+Method: POST, Path: /api/users/activate/, Date: 11/26/2023, Time: 1:44:33 AM
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 1:44:46 AM
+Method: GET, Path: /users/activate/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQW1hbCIsImVtYWlsIjoia2F3ZXdlOTgxNEBtYWlub2ouY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkVDBUSVJWZjZpMC5EOUVWLi94cVc2T2VqOWZlRi81QmM5RUR0bUd1amowZGE2Z3hveXpUaTIiLCJhZGRyZXNzIjoiMTIzIGplZGRhaCIsInBob25lIjoiMDUzNDU0MzI3OCIsImltYWdlIjoicHVibGljXFxpbWFnZXNcXHVzZXJzXFwxNzAwOTUxNjY1MDY3LWhlcm8taW1nLnBuZyIsImlhdCI6MTcwMDk1MTY2NSwiZXhwIjoxNzAwOTUyMjY1fQ.JLJkEZNYWuE_xnrwWoPGazM3IORzr4au74mFU4nHUyk, Date: 11/26/2023, Time: 1:44:59 AM
