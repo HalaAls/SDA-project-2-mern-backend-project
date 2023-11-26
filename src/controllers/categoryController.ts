@@ -1,13 +1,15 @@
 import { NextFunction, Request, Response } from 'express'
 import slugify from 'slugify'
-import mongoose from 'mongoose'
+import mongoose, { ObjectId } from 'mongoose'
 
 import { createHttpError } from '../util/createHttpError'
 import * as categoryService from '../services/categoryService'
 
 export const getAllCategories = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const categories = await categoryService.getCategories()
+    const search = req.query.search as string
+    console.log(search)
+    const categories = await categoryService.getCategories(search)
     res.status(200).send({
       message: 'return all the categoties',
       payload: categories,
