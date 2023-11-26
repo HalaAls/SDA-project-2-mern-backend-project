@@ -9,7 +9,7 @@ import {
   updateCategoryById,
   updateCategoryBySlug,
 } from '../controllers/categoryController'
-import { createCategoryValidator , updateCategoryValidator} from '../validator/categoryValidator'
+import { categoryValidator} from '../validator/categoryValidator'
 
 const router = Router()
 
@@ -18,8 +18,8 @@ router.get('/', getAllCategories)
 router.get('/:slug', getCategoryBySlug)
 //router.delete("/:id", deleteCategoryById);
 router.delete('/:slug', deleteCategoryBySlug)
-router.post('/', createCategoryValidator, createNewCategory)
+router.post('/', categoryValidator, createNewCategory)
 //router.put("/:id", updateCategoryById);
-router.put('/:slug',updateCategoryValidator,  updateCategoryBySlug)
+router.put('/:slug',categoryValidator,  updateCategoryBySlug)
 
 export default router

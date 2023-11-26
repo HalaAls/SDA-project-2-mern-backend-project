@@ -1,7 +1,7 @@
 //categoryValidator.ts
 import { check, ValidationChain } from 'express-validator'
 
-export const createCategoryValidator: ValidationChain[] = [
+export const categoryValidator: ValidationChain[] = [
   check('name')
     .trim()
     .notEmpty()
