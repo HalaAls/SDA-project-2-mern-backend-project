@@ -126,7 +126,7 @@ export const getAllUsers = async (req: Request, res: Response, next: NextFunctio
     const sort = req.query.sort as string
     const search = req.query.search as string
 
-    const { users, totalPages, currentPage } = await userService.getUsers(page, limit, search, sort)
+    const { users, totalPages, currentPage } = await userService.getUsers(page, limit, sort, search)
 
     res.status(200).send({
       message: 'Successfully retrieved all users.',
