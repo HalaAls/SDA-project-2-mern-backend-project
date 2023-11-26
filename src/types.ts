@@ -8,3 +8,13 @@ export type EmailDataType = {
   subject: string
   html: string
 }
+
+export  type UserType = {
+  name: string
+  email: string 
+  password: string
+  image?: string
+  address: string
+  phone: string
+ 
+}
