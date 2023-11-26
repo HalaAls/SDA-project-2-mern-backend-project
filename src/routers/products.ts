@@ -26,7 +26,7 @@ router.delete('/:slug', deleteProductBySlug)
 router.put(
   '/:slug',
   uploadImageProduct.single('image'),
-  productValidator,
+ // productValidator,
   updateProductBySlug
 )
 

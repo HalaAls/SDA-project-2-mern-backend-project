@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose'
 //test
 export interface ICategory extends Document {
   _id: string
-  title: string
+  name: string
   slug: string
   createdAt?: string
   updatedAt?: string
@@ -11,12 +11,12 @@ export interface ICategory extends Document {
 
 const categorySchema = new Schema(
   {
-    title: {
+    name: {
       type: String,
       required: true,
       trim: true,
-      minlenght: [3, 'Category title length must be at least 3 charecters'],
-      maxlength: [300, 'Category title length must be at most 100 charecters'],
+      minlenght: [3, 'Category name length must be at least 3 charecters'],
+      maxlength: [300, 'Category name length must be at most 100 charecters'],
     },
     slug: {
       type: String,
