@@ -1,8 +1,12 @@
+import slugify from 'slugify'
+
 import { Category, ICategory } from '../models/category'
 import { createHttpError } from '../util/createHttpError'
-// test 1
-// test 2
-// test 3
+
+export const getCategories = async (): Promise<ICategory[]> => {
+  return Category.find()
+}
+
 export const findCategoryById = async (id: string): Promise<ICategory> => {
   const category = await Category.findOne({ _id: id })
   if (!category) {
@@ -19,6 +23,21 @@ export const findCategoryBySlug = async (slug: string): Promise<ICategory> => {
     throw error
   }
   return category
+}
+
+export const createCategory = async (title: string) => {
+  const categoryExist = await Category.exists({ title })
+
+  if (categoryExist) {
+    throw createHttpError(409, 'Category already exists with this title')
+  }
+
+  const newCategory = new Category({
+    title,
+    slug: slugify(title),
+  })
+
+  await newCategory.save()
 }
 
 export const removeCategoryById = async (requestedId: string) => {
@@ -41,7 +60,7 @@ export const removeCategoryBySlug = async (requestedSlug: string) => {
   return category
 }
 
-export const updateCategory = async (
+export const updateCategoryId = async (
   id: string,
   updatedCategory: ICategory
 ): Promise<ICategory> => {
@@ -51,6 +70,22 @@ export const updateCategory = async (
 
   if (!category) {
     const error = createHttpError(404, 'category does not exist with this id')
+    throw error
+  }
+
+  return category
+}
+
+export const updateCategorySlug = async (
+  slug: string,
+  updatedCategory: ICategory
+): Promise<ICategory> => {
+    const category = await Category.findOneAndUpdate({ slug: slug }, updatedCategory, {
+      new: true,
+    })
+
+  if (!category) {
+    const error = createHttpError(404, 'category does not exist with this slug')
     throw error
   }
 
