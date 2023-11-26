@@ -3,13 +3,6 @@ import { CollationOptions } from 'mongodb'
 import { Product, ProductInterface } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
 
-// interface IProductFilter {
-//   price?: {
-//     $gte?: number
-//     $lte?: number
-//   }
-//   category?: string // Add this line
-// }
 
 export const getProducts = async (
   page = 1,
@@ -18,7 +11,7 @@ export const getProducts = async (
   maxPrice = Number.MAX_VALUE,
   sort: string,
   category = '',
-  search = '' // Add this line
+  search = ''
 ) => {
   // to count products
   const count = await Product.countDocuments()
@@ -29,7 +22,7 @@ export const getProducts = async (
     page = totalPages
   }
 
-  const searchRegExpr = new RegExp('.*' + search + '.*', 'i') // Add this line
+  const searchRegExpr = new RegExp('.*' + search + '.*', 'i')
   let filterProduct = {
     $or: [{ name: { $regex: searchRegExpr } }, { description: { $regex: searchRegExpr } }],
     price: {

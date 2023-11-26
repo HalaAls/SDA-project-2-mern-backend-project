@@ -1,10 +1,20 @@
 import slugify from 'slugify'
+import { ObjectId } from 'mongodb'
 
 import { Category, ICategory } from '../models/category'
 import { createHttpError } from '../util/createHttpError'
 
-export const getCategories = async (): Promise<ICategory[]> => {
-  return Category.find()
+export const getCategories = async (search = ''): Promise<ICategory[]> => {
+  const searchRegExpr = new RegExp('.*' + search + '.*', 'i')
+  let searchCategory = {
+    $or: [
+      { title: { $regex: searchRegExpr } },
+      { _id: { $eq: ObjectId.isValid(search) ? new ObjectId(search) : null } },
+    ],
+  }
+  const categories = await Category.find(searchCategory)
+
+  return categories
 }
 
 export const findCategoryById = async (id: string): Promise<ICategory> => {
@@ -80,9 +90,9 @@ export const updateCategorySlug = async (
   slug: string,
   updatedCategory: ICategory
 ): Promise<ICategory> => {
-    const category = await Category.findOneAndUpdate({ slug: slug }, updatedCategory, {
-      new: true,
-    })
+  const category = await Category.findOneAndUpdate({ slug: slug }, updatedCategory, {
+    new: true,
+  })
 
   if (!category) {
     const error = createHttpError(404, 'category does not exist with this slug')
