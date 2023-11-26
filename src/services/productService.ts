@@ -3,41 +3,40 @@ import { CollationOptions } from 'mongodb'
 import { Product, ProductInterface } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
 
-interface IProductFilter {
-  price?: {
-    $gte?: number
-    $lte?: number
-  }
-  category?: string // Add this line
-}
+// interface IProductFilter {
+//   price?: {
+//     $gte?: number
+//     $lte?: number
+//   }
+//   category?: string // Add this line
+// }
 
 export const getProducts = async (
   page = 1,
   limit = 3,
-  minPrice: number,
-  maxPrice: number,
+  minPrice = 0,
+  maxPrice = Number.MAX_VALUE,
   sort: string,
-  category?: string
+  category = '',
+  search = '' // Add this line
 ) => {
   // to count products
   const count = await Product.countDocuments()
   const totalPages = Math.ceil(count / limit)
-  let filterProduct: IProductFilter = {}
   let sortOption = {}
 
   if (page > totalPages) {
     page = totalPages
   }
-  if (minPrice && maxPrice) {
-    filterProduct.price = { $gte: minPrice, $lte: maxPrice }
-  } else if (minPrice) {
-    filterProduct.price = { $gte: minPrice }
-  } else if (maxPrice) {
-    filterProduct.price = { $lte: maxPrice }
-  }
 
-  if (category) {
-    filterProduct.category = category
+  const searchRegExpr = new RegExp('.*' + search + '.*', 'i') // Add this line
+  let filterProduct = {
+    $or: [{ name: { $regex: searchRegExpr } }, { description: { $regex: searchRegExpr } }],
+    price: {
+      $gte: minPrice,
+      $lte: maxPrice,
+    },
+    category: category || { $exists: true, $ne: null }, // Include category filter only if it's not empty
   }
 
   if (sort === 'title') {

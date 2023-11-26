@@ -18,4 +18,14 @@ Method: GET, Path: /api/products/orders, Date: 9/19/2022, Time: 2:29:35 PM
 Method: GET, Path: /api/products/orders, Date: 9/19/2022, Time: 2:30:36 PM
 Method: GET, Path: /api/products/orders, Date: 9/19/2022, Time: 2:34:46 PM
 Method: GET, Path: /api/orders, Date: 9/19/2022, Time: 2:34:50 PM
-Method: POST, Path: /api/orders, Date: 9/19/2022, Time: 2:42:48 PM
+Method: POST, Path: /api/orders, Date: 9/19/2022, Time: 2:42:48 PMMethod: GET, Path: /api/products, Date: 11/26/2023, Time: 3:02:02 PM
+Method: GET, Path: /api/products, Date: 11/26/2023, Time: 3:03:41 PM
+Method: GET, Path: /api/products, Date: 11/26/2023, Time: 3:03:55 PM
+Method: GET, Path: /api/products, Date: 11/26/2023, Time: 3:04:14 PM
+Method: GET, Path: /api/products, Date: 11/26/2023, Time: 3:05:03 PM
+Method: GET, Path: /api/products, Date: 11/26/2023, Time: 3:05:20 PM
+Method: GET, Path: /api/products, Date: 11/26/2023, Time: 3:05:36 PM
+Method: GET, Path: /api/products, Date: 11/26/2023, Time: 3:06:19 PM
+Method: GET, Path: /api/products, Date: 11/26/2023, Time: 3:07:22 PM
+Method: GET, Path: /api/products, Date: 11/26/2023, Time: 3:07:31 PM
+Method: GET, Path: /api/products, Date: 11/26/2023, Time: 3:09:24 PM

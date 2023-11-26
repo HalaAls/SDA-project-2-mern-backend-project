@@ -21,13 +21,16 @@ export const getAllProducts = async (req: Request, res: Response, next: NextFunc
     const maxPrice = Number(req.query.maxPrice) || Number.MAX_VALUE
     const category = req.query.category as string
     const sort = req.query.sort as string
+    const search = req.query.search as string // Add this line
+
     const { products, totalPages, currentPage } = await getProducts(
       page,
       limit,
       minPrice,
       maxPrice,
       sort,
-      category
+      category,
+      search // Add this line
     )
 
     res.send({
