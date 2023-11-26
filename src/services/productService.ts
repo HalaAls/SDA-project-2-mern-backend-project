@@ -45,7 +45,7 @@ export const getProducts = async (
       locale: 'en',
       strength: 2,
     })
-    .sort(sortOption)
+    .sort(sortOption) 
 
   return {
     products,

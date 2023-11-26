@@ -9,7 +9,7 @@ import {
   updateProductBySlug,
 } from '../controllers/productController'
 import { uploadImageProduct } from '../middlewares/uploadFile'
-import { productValidator } from '../validator/productValidator'
+import { updateProductValidator, createProductValidator } from '../validator/productValidator'
 
 const router = Router()
 
@@ -26,11 +26,11 @@ router.delete('/:slug', deleteProductBySlug)
 router.put(
   '/:slug',
   uploadImageProduct.single('image'),
- // productValidator,
+  updateProductValidator,
   updateProductBySlug
 )
 
 // POST : /products -> create a new product
-router.post('/', uploadImageProduct.single('image'), productValidator, createProduct)
+router.post('/', uploadImageProduct.single('image'), createProductValidator, createProduct)
 
 export default router
