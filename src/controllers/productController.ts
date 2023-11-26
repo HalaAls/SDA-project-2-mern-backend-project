@@ -30,7 +30,7 @@ export const getAllProducts = async (req: Request, res: Response, next: NextFunc
       maxPrice,
       sort,
       categoryId,
-      search // Add this line
+      search
     )
 
     res.send({

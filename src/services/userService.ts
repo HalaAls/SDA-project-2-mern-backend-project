@@ -3,10 +3,17 @@ import fs from 'fs/promises'
 import User, { IUser } from '../models/user'
 import { createHttpError } from '../util/createHttpError'
 import { dev } from '../config'
+import { sortItems } from '../helper/sortItems'
 
 export const getUsers = async (page = 1, limit = 3, sort: string, search = '') => {
   const count = await User.countDocuments()
   const totalPages = Math.ceil(count / limit)
+
+  if (page > totalPages) {
+    page = totalPages
+  }
+
+  const skip = (page - 1) * limit
 
   const searchRegExpr = new RegExp('.*' + search + '.*', 'i')
   let filterUsers = {
@@ -18,13 +25,14 @@ export const getUsers = async (page = 1, limit = 3, sort: string, search = '') =
     ],
   }
   let filterOptions = { password: 0, __v: 0 }
-  if (page > totalPages) {
-    page = totalPages
-  }
 
-  const skip = (page - 1) * limit
+  // sort by name, by date Added
+  const sortOption = sortItems(sort)
 
-  const users: IUser[] = await User.find(filterUsers, filterOptions).skip(skip).limit(limit)
+  const users: IUser[] = await User.find(filterUsers, filterOptions)
+    .skip(skip)
+    .limit(limit)
+    .sort(sortOption)
 
   return {
     users,
