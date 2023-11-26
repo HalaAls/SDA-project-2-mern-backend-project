@@ -4,7 +4,7 @@ import slugify from 'slugify'
 import { validationResult } from 'express-validator'
 import fs from 'fs/promises'
 
-import { Product, ProductInterface } from '../models/product'
+import { Product, IProduct } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
 import {
   findProductsBySlug,
@@ -122,7 +122,7 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
       return res.status(400).json({ errors: errors.array() })
     }
 
-    const newProduct: ProductInterface = new Product({
+    const newProduct: IProduct = new Product({
       name: name,
       slug: slugify(name),
       description: description,
