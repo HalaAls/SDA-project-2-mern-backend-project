@@ -18,4 +18,16 @@ Method: GET, Path: /api/products/orders, Date: 9/19/2022, Time: 2:29:35 PM
 Method: GET, Path: /api/products/orders, Date: 9/19/2022, Time: 2:30:36 PM
 Method: GET, Path: /api/products/orders, Date: 9/19/2022, Time: 2:34:46 PM
 Method: GET, Path: /api/orders, Date: 9/19/2022, Time: 2:34:50 PM
-Method: POST, Path: /api/orders, Date: 9/19/2022, Time: 2:42:48 PM
+Method: POST, Path: /api/orders, Date: 9/19/2022, Time: 2:42:48 PMMethod: GET, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١:٤٤:٣٦ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١:٥٥:٠٠ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١:٥٥:٠٩ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١:٥٧:٠٣ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١:٥٨:٠٧ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١:٥٩:٣٩ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ٢:٠٠:٠٠ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ٢:٠١:٢٧ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ٢:٠٢:١٥ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ٢:٠٥:١٠ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ٢:٠٥:٢٩ م
+Method: PUT, Path: /api/categories/smart, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ٢:١٦:١٤ م
+Method: PUT, Path: /api/categories/smart, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ٢:١٧:٠٦ م
