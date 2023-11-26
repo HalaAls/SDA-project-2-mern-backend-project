@@ -7,6 +7,7 @@ import User from '../models/user'
 import { createHttpError } from '../util/createHttpError'
 import { dev } from '../config'
 import { handelSendEmail } from '../helper/sendEmail'
+import { validationResult } from 'express-validator'
 
 export const processRegisterUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -16,6 +17,12 @@ export const processRegisterUser = async (req: Request, res: Response, next: Nex
     const isUserExists = await User.exists({ email: email })
     if (isUserExists) {
       throw createHttpError(409, `User already exist with the email ${email}`)
+    }
+    
+    // Check for validation errors
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
     }
 
     const hashedPassword = await bcrypt.hash(password, 10)
@@ -81,6 +88,11 @@ export const CreateUser = async (req: Request, res: Response, next: NextFunction
       throw createHttpError(409, `User already exist with the email ${req.body.email}`)
     }
 
+    // Check for validation errors
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+    }
     const { name, email, password, address, phone } = req.body
     const imagePath = req.file?.path
 
@@ -159,6 +171,11 @@ export const updateUserByEmail = async (req: Request, res: Response, next: NextF
 
     if (emailExists) {
       throw createHttpError(409, 'Email already exists')
+    }
+    // Check for validation errors
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
     }
 
     // to delete the old image from the public folder

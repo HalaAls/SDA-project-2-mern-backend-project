@@ -4,11 +4,13 @@ import mongoose, { ObjectId } from 'mongoose'
 
 import { createHttpError } from '../util/createHttpError'
 import * as categoryService from '../services/categoryService'
+import { validationResult } from 'express-validator'
 
 export const getAllCategories = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const search = req.query.search as string
     console.log(search)
+
     const categories = await categoryService.getCategories(search)
     res.status(200).send({
       message: 'return all the categoties',
@@ -53,6 +55,13 @@ export const getCategoryBySlug = async (req: Request, res: Response, next: NextF
 export const createNewCategory = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { title } = req.body
+
+     // Validation checks using express-validator
+     const errors = validationResult(req)
+
+     if (!errors.isEmpty()) {
+       return res.status(400).json({ errors: errors.array() })
+     }
     await categoryService.createCategory(title)
 
     res.status(201).send({ message: 'New category is created' })
@@ -95,6 +104,12 @@ export const updateCategoryById = async (req: Request, res: Response, next: Next
     if (updatedTitle) {
       req.body.slug = slugify(updatedTitle)
     }
+     // Validation checks using express-validator
+     const errors = validationResult(req)
+
+     if (!errors.isEmpty()) {
+       return res.status(400).json({ errors: errors.array() })
+     }
 
     const category = await categoryService.updateCategoryId(id, updatedCategory)
 
@@ -116,6 +131,14 @@ export const updateCategoryBySlug = async (req: Request, res: Response, next: Ne
     if (updatedTitle) {
       req.body.slug = slugify(updatedTitle)
     }
+
+     // Validation checks using express-validator
+     const errors = validationResult(req)
+
+     if (!errors.isEmpty()) {
+       return res.status(400).json({ errors: errors.array() })
+     }
+     
     const category = await categoryService.updateCategorySlug(requestedSlug, updatedCategory)
 
     res.status(200).send({
