@@ -3,14 +3,13 @@ import { CollationOptions } from 'mongodb'
 import { Product, ProductInterface } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
 
-
 export const getProducts = async (
   page = 1,
   limit = 3,
   minPrice = 0,
   maxPrice = Number.MAX_VALUE,
   sort: string,
-  category = '',
+  categoryId = '',
   search = ''
 ) => {
   // to count products
@@ -29,7 +28,7 @@ export const getProducts = async (
       $gte: minPrice,
       $lte: maxPrice,
     },
-    category: category || { $exists: true, $ne: null }, // Include category filter only if it's not empty
+    category: categoryId || { $exists: true, $ne: null }, // Include category filter only if it's not empty
   }
 
   if (sort === 'title') {
