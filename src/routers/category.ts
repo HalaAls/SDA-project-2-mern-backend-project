@@ -11,7 +11,7 @@ import {
 } from '../controllers/categoryController'
 import { createCategoryValidator , updateCategoryValidator} from '../validator/categoryValidator'
 
-const router = Router() 
+const router = Router()
 
 router.get('/', getAllCategories)
 // router.get("/:id", getCategoryById);
