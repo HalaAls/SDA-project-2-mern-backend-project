@@ -7,6 +7,7 @@ import fs from 'fs/promises'
 import { Product, IProduct } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
 import {
+  createNewProduct,
   findProductsBySlug,
   getProducts,
   removeProductsBySlug,
@@ -108,36 +109,17 @@ export const updateProductBySlug = async (req: Request, res: Response, next: Nex
 
 export const createProduct = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { name, description, quantity, price, category } = req.body
-
-    const productExist = await Product.exists({ name: name })
-
+    const productData = req.body
+    const image = req.file?.path as string
     // Validation checks using express-validator
     const errors = validationResult(req)
 
-    if (!errors.isEmpty() || productExist) {
-      req.file && fs.unlink(req.file.path)
-    }
-
-    if (productExist) {
-      const error = createHttpError(409, 'Product already exists with this name')
-      throw error
-    }
-
     if (!errors.isEmpty()) {
+      req.file && fs.unlink(image)
       return res.status(400).json({ errors: errors.array() })
     }
 
-    const newProduct: IProduct = new Product({
-      name: name,
-      slug: slugify(name),
-      description: description,
-      quantity: quantity,
-      price: price,
-      category: category,
-      image: req.file?.path,
-    })
-    await newProduct.save()
+    await createNewProduct(image, productData)
 
     res.status(201).send({ message: 'product is created' })
   } catch (error) {

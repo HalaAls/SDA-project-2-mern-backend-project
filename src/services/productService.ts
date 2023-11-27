@@ -1,6 +1,10 @@
+import slugify from 'slugify'
+import fs from 'fs/promises'
+
 import { sortItems } from '../helper/sortItems'
 import { Product, IProduct } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
+import { PathLike } from 'fs'
 
 export const getProducts = async (
   page = 1,
@@ -14,7 +18,6 @@ export const getProducts = async (
   // pagination
   const count = await Product.countDocuments()
   const totalPages = Math.ceil(count / limit)
-  
 
   if (page > totalPages) {
     page = totalPages
@@ -45,7 +48,7 @@ export const getProducts = async (
       locale: 'en',
       strength: 2,
     })
-    .sort(sortOption) 
+    .sort(sortOption)
 
   return {
     products,
@@ -82,4 +85,31 @@ export const updateProduct = async (slug: string, updatedProduct: IProduct): Pro
   }
 
   return product
+}
+
+export const createNewProduct = async (
+  image: string,
+  productData: IProduct
+) => {
+  const { name, description, quantity, price, category } = productData
+
+  const productExist = await Product.exists({ name: name })
+
+  if (productExist) {
+    image && fs.unlink(image)
+    const error = createHttpError(409, 'Product already exists with this name')
+    throw error
+  }
+
+  const newProduct: IProduct = new Product({
+    name: name,
+    slug: slugify(name),
+    description: description,
+    quantity: quantity,
+    price: price,
+    category: category,
+    image: image,
+  })
+
+  await newProduct.save()
 }

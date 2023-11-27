@@ -35,7 +35,7 @@ const userSchema = new Schema<IUser>(
     },
     password: {
       type: String,
-      unique: true,
+      // unique: true,
       required: [true, 'Please give the password'],
       trim: true,
       minlength: [6, 'The password must be at least 6 characters long'],
