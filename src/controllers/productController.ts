@@ -111,12 +111,18 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
     const { name, description, quantity, price, category } = req.body
 
     const productExist = await Product.exists({ name: name })
+
+    // Validation checks using express-validator
+    const errors = validationResult(req)
+
+    if (!errors.isEmpty() || productExist) {
+      req.file && fs.unlink(req.file.path)
+    }
+
     if (productExist) {
       const error = createHttpError(409, 'Product already exists with this name')
       throw error
     }
-    // Validation checks using express-validator
-    const errors = validationResult(req)
 
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() })
