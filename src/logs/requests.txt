@@ -185,3 +185,7 @@ Method: GET, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٨:
 Method: GET, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٨:٣١ ص
 Method: GET, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٨:٤٢ ص
 Method: GET, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٨:٥٨ ص
+Method: POST, Path: /api/products, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ٣:٣١:٤٨ ص
+Method: POST, Path: /api/products, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ٣:٣١:٥٥ ص
+Method: POST, Path: /api/products, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ٣:٣٢:٠٧ ص
+Method: POST, Path: /api/products, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ٣:٣٢:٢٠ ص

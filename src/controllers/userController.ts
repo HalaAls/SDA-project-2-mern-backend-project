@@ -86,7 +86,7 @@ export const activateUser = async (req: Request, res: Response, next: NextFuncti
     }
   }
 }
-export const CreateUser = async (req: Request, res: Response, next: NextFunction) => {
+export const createUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const isUserExists = await User.exists({ email: req.body.email })
     if (isUserExists) {
@@ -182,7 +182,7 @@ export const updateUser = async (req: Request, res: Response, next: NextFunction
     if (req.file?.path && prevUserData?.image !== 'public/images/users/default.png')
       prevUserData && fs.unlink(prevUserData.image)
 
-    const user = await userService.updateUserByEmail(email ,updatedUser )
+    const user = await userService.updateUserByEmail(email, updatedUser)
 
     res.send({ message: 'User is updated', payload: user })
   } catch (error) {

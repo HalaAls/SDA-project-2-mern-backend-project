@@ -1,7 +1,7 @@
 import { Router } from 'express'
 
 import {
-  CreateUser,
+  createUser,
   deleteSingUser,
   getAllUsers,
   getSingleUser,
@@ -23,7 +23,7 @@ router.post(
   processRegisterUser
 )
 router.post('/activate', uploadImageUser.single('image'), activateUser)
-router.post('/', uploadImageUser.single('image'), userValidator, CreateUser)
+router.post('/', uploadImageUser.single('image'), userValidator, createUser)
 
 router.get('/', getAllUsers)
 router.get('/:email', getSingleUser)
