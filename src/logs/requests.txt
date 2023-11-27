@@ -148,40 +148,96 @@ Method: GET, Path: /api/categories, Date: 11/26/2023, Time: 4:57:09 PM
 Method: GET, Path: /api/categories, Date: 11/26/2023, Time: 4:57:19 PM
 Method: GET, Path: /api/categories, Date: 11/26/2023, Time: 4:57:27 PM
 Method: GET, Path: /api/categories, Date: 11/26/2023, Time: 4:57:35 PM
->>>>>>> 5717aee10df229b77d81949dd1a46fa8a21dd385
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 7:53:48 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 7:53:54 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 7:55:42 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 7:56:01 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 7:56:09 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 7:56:16 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:00:12 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:00:22 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:00:30 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:02:11 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:02:30 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:02:47 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:09:19 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:09:25 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:09:31 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:09:38 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:10:58 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:11:13 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:12:37 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:12:45 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:13:02 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:13:05 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:13:07 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:14:02 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:14:21 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:14:34 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:14:38 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:14:41 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:16:12 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:16:16 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:16:21 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:16:27 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 8:16:32 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 9:11:20 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 9:12:08 PM
-Method: POST, Path: /api/products, Date: 11/26/2023, Time: 9:12:11 PM
+Method: POST, Path: /api/categories, Date: 11/26/2023, Time: 7:54:35 PM
+Method: POST, Path: /api/categories, Date: 11/26/2023, Time: 7:54:48 PM
+Method: POST, Path: /api/categories, Date: 11/26/2023, Time: 7:54:58 PM
+Method: PUT, Path: /api/categories/smart-phone, Date: 11/26/2023, Time: 7:56:02 PM
+Method: PUT, Path: /api/categories/smart-phone, Date: 11/26/2023, Time: 7:56:13 PM
+Method: DELETE, Path: /api/categories/smart-phone, Date: 11/26/2023, Time: 7:57:02 PM
+Method: GET, Path: /api/categories/smart-phone, Date: 11/26/2023, Time: 7:57:28 PM
+Method: GET, Path: /api/categories/smart-phone1, Date: 11/26/2023, Time: 7:57:33 PM
+Method: POST, Path: /api/products, Date: 11/26/2023, Time: 7:58:21 PM
+Method: POST, Path: /api/products, Date: 11/26/2023, Time: 7:58:38 PM
+Method: POST, Path: /api/products, Date: 11/26/2023, Time: 7:58:46 PM
+Method: POST, Path: /api/products, Date: 11/26/2023, Time: 7:58:57 PM
+Method: POST, Path: /api/users/register, Date: 11/26/2023, Time: 8:11:11 PM
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 8:15:10 PM
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 8:15:55 PM
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 8:16:41 PM
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 8:16:49 PM
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 8:16:54 PM
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 8:17:02 PM
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 8:17:13 PM
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 8:17:23 PM
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 8:17:31 PM
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 8:17:41 PM
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 8:18:02 PM
+Method: POST, Path: /api/users/process-register, Date: 11/26/2023, Time: 8:18:18 PM
+Method: POST, Path: /api/users, Date: 11/26/2023, Time: 8:20:59 PM
+Method: POST, Path: /api/users, Date: 11/26/2023, Time: 8:21:09 PM
+Method: PUT, Path: /api/users/amal57@hotmail.com, Date: 11/26/2023, Time: 8:21:17 PM
+Method: PUT, Path: /api/users/amal57@hotmail.com, Date: 11/26/2023, Time: 8:21:26 PM
+Method: GET, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ٩:٥٦:٥٦ م
+Method: GET, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ٩:٥٩:١٣ م
+Method: GET, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ٩:٥٩:٤٠ م
+Method: GET, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ٩:٥٩:٥٠ م
+Method: GET, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٠٠:٢٥ م
+Method: GET, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٠٠:٣٩ م
+Method: GET, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٢٤:٤٤ م
+Method: GET, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٢٤:٥٤ م
+Method: GET, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٢٥:١٢ م
+Method: GET, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٢٥:١٨ م
+Method: GET, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٣٢:٢٧ م
+Method: GET, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٣٢:٣٦ م
+Method: PUT, Path: /api/products/aaheer-2, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٣٤:٠٢ م
+Method: PUT, Path: /api/products/aaheer-2, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٣٦:٠٠ م
+Method: PUT, Path: /api/products/aaheer-2, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٣٦:٢١ م
+Method: PUT, Path: /api/products/iphone-pp, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٣٧:٢٧ م
+Method: GET, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٣٨:٠١ م
+Method: GET, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٣٨:٣٠ م
+Method: PUT, Path: /api/categories/phones, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٤٧:٤٣ م
+Method: PUT, Path: /api/categories/phones, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥١:٠٠ م
+Method: PUT, Path: /api/categories/phones, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥١:١٢ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٣:٢٩ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٤:٤٣ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٥:١٤ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٥:١٩ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٥:٢٧ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٥:٣٢ م
+Method: POST, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٥:٤٥ م
+Method: GET, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٧:١٨ م
+Method: GET, Path: /api/categories&sort=nameAZ, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٧:٣٠ م
+Method: GET, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٨:٠١ م
+Method: GET, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٨:١٧ م
+Method: GET, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٨:٣٠ م
+Method: GET, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٨:٣٣ م
+Method: GET, Path: /api/categories, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١٠:٥٨:٥٤ م
+Method: POST, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١١:٢٧:٢٩ م
+Method: POST, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١١:٢٨:١٤ م
+Method: POST, Path: /api/products, Date: ١٢‏/٥‏/١٤٤٥ هـ, Time: ١١:٢٨:٢٠ م
+Method: GET, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:٠٣:٤٧ ص
+Method: GET, Path: /api/products, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:٠٣:٥٩ ص
+Method: GET, Path: /api/categories, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:٠٤:٠٩ ص
+Method: GET, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:٠٤:١٦ ص
+Method: POST, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٠:٤٠ ص
+Method: POST, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٠:٥٨ ص
+Method: POST, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١١:٠٧ ص
+Method: POST, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٢:١٣ ص
+Method: POST, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٢:١٧ ص
+Method: POST, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٢:٣٦ ص
+Method: POST, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٢:٤٠ ص
+Method: POST, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٣:٠٥ ص
+Method: POST, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٣:١٢ ص
+Method: GET, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٣:١٨ ص
+Method: GET, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٣:٥٩ ص
+Method: GET, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٤:٣٦ ص
+Method: GET, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٦:٠٥ ص
+Method: GET, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٧:٠٩ ص
+Method: GET, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٨:١٤ ص
+Method: GET, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٨:٣١ ص
+Method: GET, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٨:٤٢ ص
+Method: GET, Path: /api/users, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ١:١٨:٥٨ ص
+Method: POST, Path: /api/products, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ٣:٣١:٤٨ ص
+Method: POST, Path: /api/products, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ٣:٣١:٥٥ ص
+Method: POST, Path: /api/products, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ٣:٣٢:٠٧ ص
+Method: POST, Path: /api/products, Date: ١٣‏/٥‏/١٤٤٥ هـ, Time: ٣:٣٢:٢٠ ص

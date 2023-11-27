@@ -3,16 +3,27 @@ import { ObjectId } from 'mongodb'
 
 import { Category, ICategory } from '../models/category'
 import { createHttpError } from '../util/createHttpError'
+import { sortItems } from '../helper/sortItems'
 
-export const getCategories = async (search = ''): Promise<ICategory[]> => {
+export const getCategories = async (search = '', sort: string): Promise<ICategory[]> => {
   const searchRegExpr = new RegExp('.*' + search + '.*', 'i')
   let searchCategory = {
     $or: [
-      { title: { $regex: searchRegExpr } },
+      { name: { $regex: searchRegExpr } },
       { _id: { $eq: ObjectId.isValid(search) ? new ObjectId(search) : null } },
     ],
   }
+
+  // sort by name, by date Added
+  const sortOption = sortItems(sort)
+
   const categories = await Category.find(searchCategory)
+    // Add collation option for case-insensitive sorting
+    .collation({
+      locale: 'en',
+      strength: 2,
+    })
+    .sort(sortOption)
 
   return categories
 }
@@ -35,16 +46,16 @@ export const findCategoryBySlug = async (slug: string): Promise<ICategory> => {
   return category
 }
 
-export const createCategory = async (title: string) => {
-  const categoryExist = await Category.exists({ title })
+export const createCategory = async (name: string) => {
+  const categoryExist = await Category.exists({ name })
 
   if (categoryExist) {
-    throw createHttpError(409, 'Category already exists with this title')
+    throw createHttpError(409, 'Category already exists with this name')
   }
 
   const newCategory = new Category({
-    title,
-    slug: slugify(title),
+    name,
+    slug: slugify(name),
   })
 
   await newCategory.save()

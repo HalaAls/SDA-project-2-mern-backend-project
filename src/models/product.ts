@@ -2,7 +2,7 @@
 import { Schema, model, Document } from 'mongoose'
 import { ICategory } from './category'
 
-export interface ProductInterface extends Document {
+export interface IProduct extends Document {
   name: string
   slug: string
   description: string
@@ -55,4 +55,4 @@ const productSchema = new Schema(
 )
 
 // create the model/collections
-export const Product = model<ProductInterface>('Product', productSchema)
+export const Product = model<IProduct>('Product', productSchema)

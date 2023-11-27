@@ -9,7 +9,7 @@ import {
   updateProductBySlug,
 } from '../controllers/productController'
 import { uploadImageProduct } from '../middlewares/uploadFile'
-import { createProductValidator, updateProductValidator } from '../validator/productValidator'
+import { updateProductValidator, createProductValidator } from '../validator/productValidator'
 
 const router = Router()
 

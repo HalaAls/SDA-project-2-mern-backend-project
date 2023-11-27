@@ -4,7 +4,7 @@ import slugify from 'slugify'
 import { validationResult } from 'express-validator'
 import fs from 'fs/promises'
 
-import { Product, ProductInterface } from '../models/product'
+import { Product, IProduct } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
 import {
   findProductsBySlug,
@@ -30,7 +30,7 @@ export const getAllProducts = async (req: Request, res: Response, next: NextFunc
       maxPrice,
       sort,
       categoryId,
-      search // Add this line
+      search
     )
 
     res.send({
@@ -111,23 +111,24 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
     const { name, description, quantity, price, category } = req.body
 
     const productExist = await Product.exists({ name: name })
+
     // Validation checks using express-validator
     const errors = validationResult(req)
 
     if (!errors.isEmpty() || productExist) {
-      if (req.file) {
-        fs.unlink(req.file.path)
-      }
+      req.file && fs.unlink(req.file.path)
     }
+
     if (productExist) {
       const error = createHttpError(409, 'Product already exists with this name')
       throw error
     }
+
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() })
     }
 
-    const newProduct: ProductInterface = new Product({
+    const newProduct: IProduct = new Product({
       name: name,
       slug: slugify(name),
       description: description,

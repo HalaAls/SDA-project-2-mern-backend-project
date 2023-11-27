@@ -1,6 +1,7 @@
 //productValidator.ts
 import { check, ValidationChain } from 'express-validator'
 
+
 export const createProductValidator: ValidationChain[] = [
   check('name')
     .trim()

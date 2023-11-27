@@ -1,6 +1,5 @@
-import { CollationOptions } from 'mongodb'
-
-import { Product, ProductInterface } from '../models/product'
+import { sortItems } from '../helper/sortItems'
+import { Product, IProduct } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
 
 export const getProducts = async (
@@ -12,15 +11,18 @@ export const getProducts = async (
   categoryId = '',
   search = ''
 ) => {
-  // to count products
+  // pagination
   const count = await Product.countDocuments()
   const totalPages = Math.ceil(count / limit)
-  let sortOption = {}
+  
 
   if (page > totalPages) {
     page = totalPages
   }
 
+  const skip = (page - 1) * limit
+
+  // search AND filter by price, by category
   const searchRegExpr = new RegExp('.*' + search + '.*', 'i')
   let filterProduct = {
     $or: [{ name: { $regex: searchRegExpr } }, { description: { $regex: searchRegExpr } }],
@@ -31,15 +33,10 @@ export const getProducts = async (
     category: categoryId || { $exists: true, $ne: null }, // Include category filter only if it's not empty
   }
 
-  if (sort === 'title') {
-    sortOption = { name: 1 }
-  } else if (sort === 'dateAdded') {
-    sortOption = { createdAt: -1 }
-  }
+  // sort by name, by date Added, by price
+  const sortOption = sortItems(sort)
 
-  const skip = (page - 1) * limit
-
-  const products: ProductInterface[] = await Product.find(filterProduct)
+  const products: IProduct[] = await Product.find(filterProduct)
     .skip(skip)
     .populate('category')
     .limit(limit)
@@ -48,7 +45,7 @@ export const getProducts = async (
       locale: 'en',
       strength: 2,
     })
-    .sort(sortOption)
+    .sort(sortOption) 
 
   return {
     products,
@@ -57,7 +54,7 @@ export const getProducts = async (
   }
 }
 
-export const findProductsBySlug = async (slug: string): Promise<ProductInterface> => {
+export const findProductsBySlug = async (slug: string): Promise<IProduct> => {
   const product = await Product.findOne({ slug: slug })
 
   if (!product) {
@@ -74,10 +71,7 @@ export const removeProductsBySlug = async (slug: string) => {
   return product
 }
 
-export const updateProduct = async (
-  slug: string,
-  updatedProduct: ProductInterface
-): Promise<ProductInterface> => {
+export const updateProduct = async (slug: string, updatedProduct: IProduct): Promise<IProduct> => {
   const product = await Product.findOneAndUpdate({ slug }, updatedProduct, {
     new: true,
   })
