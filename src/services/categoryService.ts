@@ -6,7 +6,6 @@ import { createHttpError } from '../util/createHttpError'
 
 export const getCategories = async (search = ''): Promise<ICategory[]> => {
   const searchRegExpr = new RegExp('.*' + search + '.*', 'i')
-  console.log('search is ', search)
   let searchCategory = {
     $or: [
       { title: { $regex: searchRegExpr } },
@@ -14,7 +13,6 @@ export const getCategories = async (search = ''): Promise<ICategory[]> => {
     ],
   }
   const categories = await Category.find(searchCategory)
-  console.log(searchCategory.$or)
 
   return categories
 }
