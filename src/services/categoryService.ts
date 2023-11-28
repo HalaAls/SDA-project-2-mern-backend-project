@@ -6,21 +6,38 @@ import { createHttpError } from '../util/createHttpError'
 import { sortItems } from '../helper/sortItems'
 import { searchItems } from '../helper/searchItems'
 
-export const getCategories = async (search: string, sort: string): Promise<ICategory[]> => {
+export const getCategories = async (
+  page = 1,
+  limit = 3,
+  search: string,
+  sort: string
+) => {
+  // pagination
+  const count = await Category.countDocuments()
+  const totalPages = Math.ceil(count / limit)
+
+  if (page > totalPages) {
+    page = totalPages
+  }
+
+  const skip = (page - 1) * limit
+
   const searchRegExpr = new RegExp('.*' + search + '.*', 'i')
   // search category by its name
   const searchCategory = searchItems({ search })
   // sort by name, by date Added
   const sortOption = sortItems(sort)
 
-  const categories = await Category.find(searchCategory)
+  const categories: ICategory[] = await Category.find(searchCategory)
+    .skip(skip)
+    .limit(limit)
     .collation({
       locale: 'en',
       strength: 2,
     })
     .sort(sortOption)
 
-  return categories
+  return { categories, totalPages, currentPage: page }
 }
 
 export const findCategoryById = async (id: string): Promise<ICategory> => {

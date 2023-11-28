@@ -416,3 +416,9 @@ Method: POST, Path: /api/products, Date: ١٤‏/٥‏/١٤٤٥ هـ, Time: ١٢
 Method: POST, Path: /api/products, Date: ١٤‏/٥‏/١٤٤٥ هـ, Time: ١٢:٤٦:٣٣ ص
 Method: POST, Path: /api/products, Date: ١٤‏/٥‏/١٤٤٥ هـ, Time: ١٢:٤٦:٤٤ ص
 Method: PUT, Path: /api/products/iphone-hhhhh, Date: ١٤‏/٥‏/١٤٤٥ هـ, Time: ١٢:٤٩:٠٤ ص
+Method: GET, Path: /api/categories, Date: ١٤‏/٥‏/١٤٤٥ هـ, Time: ٢:٥٥:٠٤ م
+Method: GET, Path: /api/categories, Date: ١٤‏/٥‏/١٤٤٥ هـ, Time: ٢:٥٦:١٨ م
+Method: GET, Path: /api/categories, Date: ١٤‏/٥‏/١٤٤٥ هـ, Time: ٢:٥٦:٤٠ م
+Method: GET, Path: /api/categories, Date: ١٤‏/٥‏/١٤٤٥ هـ, Time: ٢:٥٦:٤٥ م
+Method: GET, Path: /api/categories, Date: ١٤‏/٥‏/١٤٤٥ هـ, Time: ٢:٥٦:٥٠ م
+Method: GET, Path: /api/categories, Date: ١٤‏/٥‏/١٤٤٥ هـ, Time: ٢:٥٧:٠٧ م

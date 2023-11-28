@@ -8,13 +8,22 @@ import { validationResult } from 'express-validator'
 
 export const getAllCategories = async (req: Request, res: Response, next: NextFunction) => {
   try {
+    let page = Number(req.query.page) || 1
+    const limit = Number(req.query.limit) || 3
     const search = (req.query.search as string) || ''
     const sort = req.query.sort as string
 
-    const categories = await categoryService.getCategories(search, sort)
+    const { categories, totalPages, currentPage } = await categoryService.getCategories(
+      page,
+      limit,
+      search,
+      sort
+    )
     res.status(200).send({
       message: 'return all the categoties',
       payload: categories,
+      totalPages,
+      currentPage,
     })
   } catch (error) {
     if (error instanceof mongoose.Error.CastError) {
