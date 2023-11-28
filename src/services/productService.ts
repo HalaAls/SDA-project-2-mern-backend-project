@@ -23,7 +23,11 @@ export const getProducts = async (
     page = totalPages
   }
 
-  const skip = (page - 1) * limit
+  let skip = 0
+  // to check if products is empty or not
+  if (count > 0) {
+    skip = (page - 1) * limit
+  }
 
   // search AND filter by price, by categoryid
   const filterProduct = searchItems({ search, minPrice, maxPrice, categoryId })

@@ -422,12 +422,3 @@ Method: GET, Path: /api/categories, Date: ١٤‏/٥‏/١٤٤٥ هـ, Time: ٢:
 Method: GET, Path: /api/categories, Date: ١٤‏/٥‏/١٤٤٥ هـ, Time: ٢:٥٦:٤٥ م
 Method: GET, Path: /api/categories, Date: ١٤‏/٥‏/١٤٤٥ هـ, Time: ٢:٥٦:٥٠ م
 Method: GET, Path: /api/categories, Date: ١٤‏/٥‏/١٤٤٥ هـ, Time: ٢:٥٧:٠٧ م
-Method: POST, Path: /api/users/process-register, Date: 11/28/2023, Time: 9:22:13 PM
-Method: POST, Path: /api/users/process-register, Date: 11/28/2023, Time: 9:23:11 PM
-Method: POST, Path: /api/users/process-register, Date: 11/28/2023, Time: 9:23:18 PM
-Method: POST, Path: /api/users/activate/, Date: 11/28/2023, Time: 9:23:40 PM
-Method: PUT, Path: /api/users/ban/amal58@hotmail.com, Date: 11/28/2023, Time: 10:11:35 PM
-Method: PUT, Path: /api/users/ban/amal59@hotmail.com, Date: 11/28/2023, Time: 10:12:04 PM
-Method: PUT, Path: /api/users/ban/amal89@hotmail.com, Date: 11/28/2023, Time: 10:41:39 PM
-Method: PUT, Path: /api/users/ban/amal89@hotmail.com, Date: 11/28/2023, Time: 10:42:00 PM
-Method: PUT, Path: /api/users/unban/amal89@hotmail.com, Date: 11/28/2023, Time: 10:42:20 PM

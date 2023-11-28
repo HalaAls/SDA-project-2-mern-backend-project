@@ -139,14 +139,20 @@ export const getAllUsers = async (req: Request, res: Response, next: NextFunctio
 
     const { users, totalPages, currentPage } = await userService.getUsers(page, limit, sort, search)
 
-    res.status(200).send({
-      message: 'Successfully retrieved all users.',
-      payload: {
-        users,
-        totalPages,
-        currentPage,
-      },
-    })
+    if (users.length > 0) {
+      res.status(200).send({
+        message: 'Successfully retrieved all users.',
+        payload: {
+          users,
+          totalPages,
+          currentPage,
+        },
+      })
+    } else {
+      res.status(404).send({
+        message: 'users is empty',
+      })
+    }
   } catch (error) {
     next(error)
   }

@@ -27,14 +27,20 @@ export const getAllProducts = async (req: Request, res: Response, next: NextFunc
       search
     )
 
-    res.send({
-      message: 'get all the products',
-      payload: {
-        products,
-        totalPages,
-        currentPage,
-      },
-    })
+    if (products.length > 0) {
+      res.send({
+        message: 'return all the products',
+        payload: {
+          products,
+          totalPages,
+          currentPage,
+        },
+      })
+    } else {
+      res.status(404).send({
+        message: 'products is empty',
+      })
+    }
   } catch (error) {
     next(error)
   }
@@ -109,7 +115,7 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
   try {
     const productData = req.body
     const image = req.file?.path as string
-    
+
     // Validation checks using express-validator
     const errors = validationResult(req)
 
