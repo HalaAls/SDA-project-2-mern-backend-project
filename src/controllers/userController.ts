@@ -11,6 +11,7 @@ import { handelSendEmail } from '../helper/sendEmail'
 import * as userService from '../services/userService'
 
 import { UserType } from '../types'
+import generateToken from '../util/generateToken'
 
 export const processRegisterUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -39,7 +40,9 @@ export const processRegisterUser = async (req: Request, res: Response, next: Nex
     if (imagePath) {
       tokenPayload.image = imagePath
     }
-    const token = jwt.sign(tokenPayload, dev.app.jwtUserActivationKey, { expiresIn: '10m' })
+  //  const token = jwt.sign(tokenPayload, dev.app.jwtUserActivationKey, { expiresIn: '10m' })
+   const token = generateToken(tokenPayload);
+    
     const emailData = {
       email: email,
       subject: '',

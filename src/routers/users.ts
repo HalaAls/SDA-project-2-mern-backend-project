@@ -19,10 +19,9 @@ const router = Router()
 router.post(
   '/process-register',
   uploadImageUser.single('image'),
-  userValidator,
   processRegisterUser
 )
-router.post('/activate', uploadImageUser.single('image'), activateUser)
+router.post('/activate', activateUser)
 router.post('/', uploadImageUser.single('image'), userValidator, createUser)
 
 router.get('/', getAllUsers)
