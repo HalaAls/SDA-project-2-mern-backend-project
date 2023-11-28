@@ -19,12 +19,19 @@ export const getAllCategories = async (req: Request, res: Response, next: NextFu
       search,
       sort
     )
-    res.status(200).send({
-      message: 'return all the categoties',
-      payload: categories,
-      totalPages,
-      currentPage,
-    })
+
+    if (categories.length > 0) {
+      res.status(200).send({
+        message: 'return all the categoties',
+        payload: categories,
+        totalPages,
+        currentPage,
+      })
+    } else {
+      res.status(404).send({
+        message: 'categories is empty',
+      })
+    }
   } catch (error) {
     if (error instanceof mongoose.Error.CastError) {
       const error = createHttpError(400, 'id format is not valid')

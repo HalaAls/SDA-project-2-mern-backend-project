@@ -13,7 +13,11 @@ export const getUsers = async (page = 1, limit = 3, sort: string, search = '') =
     page = totalPages
   }
 
-  const skip = (page - 1) * limit
+  let skip = 0
+  // to check if users is empty or not
+  if (count > 0) {
+    skip = (page - 1) * limit
+  }
 
   const searchRegExpr = new RegExp('.*' + search + '.*', 'i')
   let filterUsers = {

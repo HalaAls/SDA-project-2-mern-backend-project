@@ -6,12 +6,7 @@ import { createHttpError } from '../util/createHttpError'
 import { sortItems } from '../helper/sortItems'
 import { searchItems } from '../helper/searchItems'
 
-export const getCategories = async (
-  page = 1,
-  limit = 3,
-  search: string,
-  sort: string
-) => {
+export const getCategories = async (page = 1, limit = 3, search: string, sort: string) => {
   // pagination
   const count = await Category.countDocuments()
   const totalPages = Math.ceil(count / limit)
@@ -20,8 +15,11 @@ export const getCategories = async (
     page = totalPages
   }
 
-  const skip = (page - 1) * limit
-
+  let skip = 0
+  // to check if categories is empty or not
+  if (count > 0) {
+    skip = (page - 1) * limit
+  }
   const searchRegExpr = new RegExp('.*' + search + '.*', 'i')
   // search category by its name
   const searchCategory = searchItems({ search })
