@@ -7,6 +7,7 @@ import usersRouter from './routers/users'
 import productsRouter from './routers/products'
 import ordersRouter from './routers/orders'
 import categoryRouter from './routers/category'
+import authRouter from './routers/authRoute'
 
 // import apiErrorHandler from './middlewares/errorHandler'
 import myLogger from './middlewares/logger'
@@ -27,6 +28,7 @@ app.use('/api/products', productsRouter)
 app.use('/api/orders', ordersRouter)
 app.use('/api/categories', categoryRouter)
 app.use('/api/users', usersRouter)
+app.use('/api/auth', authRouter)
 
 app.listen(PORT, () => {
   console.log('Server running http://localhost:' + PORT)
