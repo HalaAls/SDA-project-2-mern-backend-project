@@ -45,9 +45,8 @@ export const processRegisterUser = async (req: Request, res: Response, next: Nex
     if (imagePath) {
       tokenPayload.image = imagePath
     }
-  //  const token = jwt.sign(tokenPayload, dev.app.jwtUserActivationKey, { expiresIn: '10m' })
-   const token = generateToken(tokenPayload);
-    
+    // const token = jwt.sign(tokenPayload, dev.app.jwtUserActivationKey, { expiresIn: '10m' })
+    const token = generateToken(tokenPayload)
     const emailData = {
       email: email,
       subject: '',
@@ -158,7 +157,7 @@ export const getSingleUser = async (req: Request, res: Response, next: NextFunct
     const email = req.params.email
     const user = await userService.getUser(email)
 
-    res.json({ message: 'User found successfully', user })
+    res.status(200).json({ message: 'User found successfully', user })
   } catch (error) {
     next(error)
   }
@@ -172,7 +171,7 @@ export const deleteSingUser = async (req: Request, res: Response, next: NextFunc
     // to delete the image from the public/images/users folder
     user && deleteImage(user.image, 'users')
 
-    res.json({ message: 'User deleted successfully', user })
+    res.status(200).json({ message: 'User deleted successfully', user })
   } catch (error) {
     next(error)
   }
@@ -202,7 +201,7 @@ export const updateUser = async (req: Request, res: Response, next: NextFunction
 
     const user = await userService.updateUserByEmail(email, updatedUser)
 
-    res.send({ message: 'User is updated', payload: user })
+    res.status(200).send({ message: 'User is updated', payload: user })
   } catch (error) {
     next(error)
   }
@@ -210,8 +209,9 @@ export const updateUser = async (req: Request, res: Response, next: NextFunction
 
 export const banUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await userService.banUserByEmail(req.params.email)
-    res.json({ message: 'Banned the User successfully' })
+    const email = req.params.email
+    await userService.updateBanStatus(email, true)
+    res.status(200).json({ message: 'Banned the User successfully' })
   } catch (error) {
     next(error)
   }
@@ -219,8 +219,9 @@ export const banUser = async (req: Request, res: Response, next: NextFunction) =
 
 export const unBanUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await userService.unBanUserByEmail(req.params.email)
-    res.json({ message: 'Unbanned the User successfully' })
+    const email = req.params.email
+    await userService.updateBanStatus(email, false)
+    res.status(200).json({ message: 'Unbanned the User successfully' })
   } catch (error) {
     next(error)
   }

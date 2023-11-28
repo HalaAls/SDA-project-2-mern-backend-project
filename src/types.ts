@@ -18,3 +18,7 @@ export  type UserType = {
   phone: string
  
 }
+
+export interface TokenPayload {
+  [key: string]: any
+}

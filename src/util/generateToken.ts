@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken'
 import { dev } from '../config'
-import { UserType } from '../types'
+import { TokenPayload } from '../types'
 
-const generateToken = (tokenPayload : UserType) => {
-  return jwt.sign(tokenPayload , dev.app.jwtUserActivationKey, {
+const generateToken = (payload: TokenPayload): string => {
+  return jwt.sign(payload, dev.app.jwtUserActivationKey, {
     expiresIn: '10m',
   })
 }

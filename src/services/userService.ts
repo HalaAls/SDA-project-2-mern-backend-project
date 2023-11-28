@@ -74,18 +74,15 @@ export const updateUserByEmail = async (email: string, updatedUser: IUser): Prom
   return user
 }
 
-export const banUserByEmail = async (email: string) => {
-  const user = await User.findOneAndUpdate({ email: email }, { isBanned: true })
-  if (!user) {
-    throw createHttpError(404, `User not found with the email ${email}`)
-  }
-  return user
-}
 
-export const unBanUserByEmail = async (email: string) => {
-  const user = await User.findOneAndUpdate({ email: email }, { isBanned: false })
+export const updateBanStatus = async (email: string, isBanned: boolean) => {
+  const update = { isBanned: isBanned };
+  const user = await User.findOneAndUpdate({ email: email }, update, { new: true });
+
   if (!user) {
-    throw createHttpError(404, `User not found with the email ${email}`)
+    throw createHttpError(404, `User not found with the email ${email}`);
   }
-  return user
-}
+
+  return user;
+};
+
