@@ -8,7 +8,7 @@ import { validationResult } from 'express-validator'
 
 export const getAllCategories = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const search = req.query.search as string
+    const search = (req.query.search as string) || ''
     const sort = req.query.sort as string
 
     const categories = await categoryService.getCategories(search, sort)
