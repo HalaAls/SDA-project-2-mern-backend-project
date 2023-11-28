@@ -7,7 +7,7 @@ export const dev = {
     jwtUserActivationKey: process.env.JWT_USER_ACTIVATION_KEY || 'shhhhh',
     smtpUsername: process.env.SMTP_USERNAME || 'amlalgamdi.80@gmail.com',
     smtpPassword: process.env.SMTP_PASSWORD || 'noxo hymh pees teql',
-  },
+  }, 
   db: {
     url: process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/sda-ecommerce-db',
   },

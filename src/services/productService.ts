@@ -1,9 +1,9 @@
 import slugify from 'slugify'
-import fs from 'fs/promises'
 
 import { sortItems } from '../helper/sortItems'
 import { Product, IProduct } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
+import { deleteImage } from '../helper/deleteImage'
 import { searchItems } from '../helper/searchItems'
 
 export const getProducts = async (
@@ -84,7 +84,7 @@ export const createNewProduct = async (image: string, productData: IProduct) => 
   const productExist = await Product.exists({ name: name })
 
   if (productExist) {
-    image && fs.unlink(image)
+    image && deleteImage(image, 'products')
     const error = createHttpError(409, 'Product already exists with this name')
     throw error
   }
