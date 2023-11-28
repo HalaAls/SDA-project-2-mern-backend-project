@@ -78,7 +78,6 @@ export const updateUserByEmail = async (email: string, updatedUser: IUser): Prom
   return user
 }
 
-
 export const updateBanStatus = async (email: string, isBanned: boolean) => {
   const update = { isBanned: isBanned };
   const user = await User.findOneAndUpdate({ email: email }, update, { new: true });

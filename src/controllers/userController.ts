@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from 'express'
-import fs from 'fs/promises'
 import jwt, { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import { validationResult } from 'express-validator'
