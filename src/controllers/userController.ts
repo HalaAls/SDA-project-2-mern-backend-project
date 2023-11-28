@@ -12,6 +12,7 @@ import * as userService from '../services/userService'
 
 import { UserType } from '../types'
 import generateToken from '../util/generateToken'
+import { deleteImage } from '../helper/deleteImage'
 
 export const processRegisterUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -20,12 +21,16 @@ export const processRegisterUser = async (req: Request, res: Response, next: Nex
 
     const isUserExists = await User.exists({ email: email })
     if (isUserExists) {
+      // test this case
+      imagePath && deleteImage(imagePath, 'users')
       throw createHttpError(409, `User already exist with the email ${email}`)
     }
 
     // Check for validation errors
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
+      // test this case
+      imagePath && deleteImage(imagePath, 'users')
       return res.status(400).json({ errors: errors.array() })
     }
 
@@ -89,18 +94,22 @@ export const activateUser = async (req: Request, res: Response, next: NextFuncti
     }
   }
 }
+
 export const createUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const isUserExists = await User.exists({ email: req.body.email })
     if (isUserExists) {
+      req.file?.path && deleteImage(req.file.path, 'users')
       throw createHttpError(409, `User already exist with the email ${req.body.email}`)
     }
 
     // Check for validation errors
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
+      req.file?.path && deleteImage(req.file.path, 'users')
       return res.status(400).json({ errors: errors.array() })
     }
+
     const { name, email, password, address, phone } = req.body
     const imagePath = req.file?.path
 
@@ -159,6 +168,10 @@ export const deleteSingUser = async (req: Request, res: Response, next: NextFunc
   try {
     const email = req.params.email
     const user = await userService.deleteUserByEmail(email)
+
+    // to delete the image from the public/images/users folder
+    user && deleteImage(user.image, 'users')
+
     res.json({ message: 'User deleted successfully', user })
   } catch (error) {
     next(error)
@@ -172,18 +185,20 @@ export const updateUser = async (req: Request, res: Response, next: NextFunction
     const emailExists = await User.exists({ email: updatedUser.email })
 
     if (emailExists) {
+      updatedUser.image && deleteImage(updatedUser.image, 'users')
       throw createHttpError(409, 'Email already exists')
     }
+
     // Check for validation errors
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
+      updatedUser.image && deleteImage(updatedUser.image, 'users')
       return res.status(400).json({ errors: errors.array() })
     }
 
-    // To delete the old image from the public folder
+    // to delete the image from the public/images/users folder
     const prevUserData = await User.findOne({ email })
-    if (req.file?.path && prevUserData?.image !== 'public/images/users/default.png')
-      prevUserData && fs.unlink(prevUserData.image)
+    req.file?.path && prevUserData && deleteImage(prevUserData.image, 'users')
 
     const user = await userService.updateUserByEmail(email, updatedUser)
 

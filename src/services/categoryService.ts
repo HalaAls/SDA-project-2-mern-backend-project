@@ -7,7 +7,6 @@ import { sortItems } from '../helper/sortItems'
 
 export const getCategories = async (search = '', sort: string): Promise<ICategory[]> => {
   const searchRegExpr = new RegExp('.*' + search + '.*', 'i')
-  console.log('search is ', search)
   let searchCategory = {
     $or: [
       { name: { $regex: searchRegExpr } },

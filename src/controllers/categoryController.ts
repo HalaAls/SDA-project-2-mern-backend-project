@@ -69,6 +69,7 @@ export const createNewCategory = async (req: Request, res: Response, next: NextF
     next(error)
   }
 }
+
 export const deleteCategoryById = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const id = req.params.id
