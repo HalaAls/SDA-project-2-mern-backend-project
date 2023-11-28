@@ -4,15 +4,16 @@ import { sortItems } from '../helper/sortItems'
 import { Product, IProduct } from '../models/product'
 import { createHttpError } from '../util/createHttpError'
 import { deleteImage } from '../helper/deleteImage'
+import { searchItems } from '../helper/searchItems'
 
 export const getProducts = async (
   page = 1,
   limit = 3,
-  minPrice = 0,
-  maxPrice = Number.MAX_VALUE,
+  minPrice: number,
+  maxPrice: number,
   sort: string,
-  categoryId = '',
-  search = ''
+  categoryId: string,
+  search: string
 ) => {
   // pagination
   const count = await Product.countDocuments()
@@ -24,16 +25,8 @@ export const getProducts = async (
 
   const skip = (page - 1) * limit
 
-  // search AND filter by price, by category
-  const searchRegExpr = new RegExp('.*' + search + '.*', 'i')
-  let filterProduct = {
-    $or: [{ name: { $regex: searchRegExpr } }, { description: { $regex: searchRegExpr } }],
-    price: {
-      $gte: minPrice,
-      $lte: maxPrice,
-    },
-    category: categoryId || { $exists: true, $ne: null }, // Include category filter only if it's not empty
-  }
+  // search AND filter by price, by categoryid
+  const filterProduct = searchItems({ search, minPrice, maxPrice, categoryId })
 
   // sort by name, by date Added, by price
   const sortOption = sortItems(sort)
@@ -42,7 +35,6 @@ export const getProducts = async (
     .skip(skip)
     .populate('category')
     .limit(limit)
-    // Add collation option for case-insensitive sorting
     .collation({
       locale: 'en',
       strength: 2,

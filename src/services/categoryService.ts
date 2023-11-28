@@ -4,21 +4,16 @@ import { ObjectId } from 'mongodb'
 import { Category, ICategory } from '../models/category'
 import { createHttpError } from '../util/createHttpError'
 import { sortItems } from '../helper/sortItems'
+import { searchItems } from '../helper/searchItems'
 
-export const getCategories = async (search = '', sort: string): Promise<ICategory[]> => {
+export const getCategories = async (search: string, sort: string): Promise<ICategory[]> => {
   const searchRegExpr = new RegExp('.*' + search + '.*', 'i')
-  let searchCategory = {
-    $or: [
-      { name: { $regex: searchRegExpr } },
-      { _id: { $eq: ObjectId.isValid(search) ? new ObjectId(search) : null } },
-    ],
-  }
-
+  // search category by its name
+  const searchCategory = searchItems({ search })
   // sort by name, by date Added
   const sortOption = sortItems(sort)
 
   const categories = await Category.find(searchCategory)
-    // Add collation option for case-insensitive sorting
     .collation({
       locale: 'en',
       strength: 2,
