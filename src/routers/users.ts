@@ -20,6 +20,7 @@ const router = Router()
 router.post(
   '/process-register',
   uploadImageUser.single('image'),
+  userValidator,
   isLoggedOut,
   processRegisterUser
 )

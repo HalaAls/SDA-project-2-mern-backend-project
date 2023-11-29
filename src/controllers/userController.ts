@@ -1,19 +1,17 @@
 import { NextFunction, Request, Response } from 'express'
 import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken'
-import bcrypt from 'bcrypt'
 import { validationResult } from 'express-validator'
 
 import User from '../models/user'
 import { createHttpError } from '../util/createHttpError'
 import { handelSendEmail } from '../helper/sendEmail'
 import * as userService from '../services/userService'
-import { UserType } from '../types'
 import { generateToken, verifyToken } from '../util/generateToken'
 import { deleteImage } from '../helper/deleteImage'
 
 export const processRegisterUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { name, email, password, address, phone } = req.body
+    const { name, email } = req.body
     const imagePath = req.file?.path
 
     const isUserExists = await User.exists({ email: email })
@@ -31,26 +29,11 @@ export const processRegisterUser = async (req: Request, res: Response, next: Nex
       return res.status(400).json({ errors: errors.array() })
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10)
-    const tokenPayload: UserType = {
-      name: name,
-      email: email,
-      password: hashedPassword,
-      address: address,
-      phone: phone,
-    }
-    if (imagePath) {
-      tokenPayload.image = imagePath
-    }
-    const token = generateToken(tokenPayload)// Generate activate token
-    const emailData = {
-      email: email,
-      subject: '',
-      html: `<h1> Hello ${name} </h1> 
-      <p>Please activate your account by clicking on the following link:
-      <a href="http://localhost:5050/users/activate/${token} "> click here to activate </a></p>
-      `,
-    }
+    // User doesn't exist, continue with registration process
+    const tokenPayload = await userService.createTokenPayload(req.body, imagePath)
+    const token = generateToken(tokenPayload)
+
+    const emailData = await userService.createEmailData(name, email, token)
     await handelSendEmail(emailData)
 
     res.status(200).json({
@@ -124,7 +107,6 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
 
 export const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
-
     let page = Number(req.query.page) || 1
     const limit = Number(req.query.limit) || 3
     const sort = req.query.sort as string

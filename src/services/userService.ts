@@ -1,9 +1,11 @@
 import fs from 'fs/promises'
+import bcrypt from 'bcrypt'
 
 import User, { IUser } from '../models/user'
 import { createHttpError } from '../util/createHttpError'
 import { dev } from '../config'
 import { sortItems } from '../helper/sortItems'
+import { UserType } from '../types'
 
 export const getUsers = async (page = 1, limit = 3, sort: string, search = '') => {
   const count = await User.countDocuments()
@@ -89,3 +91,30 @@ export const updateBanStatus = async (email: string, isBanned: boolean) => {
   return user
 }
 
+export const createTokenPayload = async (userData: IUser, imagePath?: string): Promise<UserType> => {
+  const { name, email, password, address, phone } = userData
+  const hashedPassword = await bcrypt.hash(password, 10)
+
+  const tokenPayload: UserType = {
+    name: name,
+    email: email,
+    password: hashedPassword,
+    address: address,
+    phone: phone,
+  };
+  if (imagePath) {
+    tokenPayload.image = imagePath;
+  }
+  return tokenPayload;
+};
+
+export const createEmailData = (name: string, email: string, token: string): { email: string; subject: string; html: string } => {
+  return {
+    email: email,
+    subject: '',
+    html: `<h1> Hello ${name} </h1> 
+      <p>Please activate your account by clicking on the following link:
+      <a href="http://localhost:5050/users/activate/${token} "> click here to activate </a></p>
+    `,
+  };
+};
