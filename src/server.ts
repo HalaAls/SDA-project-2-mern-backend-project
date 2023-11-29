@@ -1,6 +1,7 @@
 //server.ts
 import express, { Application } from 'express'
 import morgan from 'morgan'
+import cookieParser from 'cookie-parser'
 
 import { dev } from './config'
 import usersRouter from './routers/users'
@@ -20,9 +21,10 @@ const app: Application = express()
 const PORT: number = dev.app.port
 
 app.use(myLogger)
+app.use(cookieParser())
 app.use(morgan('dev'))
-app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 app.use('/api/products', productsRouter)
 app.use('/api/orders', ordersRouter)
@@ -35,13 +37,13 @@ app.listen(PORT, () => {
   connectDB()
 })
 
-// client error
+// Client error
 app.use((req, res, next) => {
   const error = createHttpError(404, 'Route not found')
   next(error)
 })
 
-// it have to be at the bottom of all routes so they can reach to it
+// ÷t have to be at the bottom of all routes so they can reach to it
 app.use(errorHandler)
 
 // app.use(apiErrorHandler)

@@ -1,4 +1,3 @@
-
 import { Request, Response, NextFunction } from 'express'
 
 import { Error } from '../types'
@@ -8,10 +7,6 @@ export const errorHandler = (error: Error, req: Request, res: Response, next: Ne
     message: error.message,
   })
 }
-
-
-
-
 
 // import { NextFunction, Request, Response } from 'express'
 // import ApiError from '../errors/ApiError'

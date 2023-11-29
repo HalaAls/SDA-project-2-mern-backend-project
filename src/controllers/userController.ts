@@ -1,16 +1,14 @@
 import { NextFunction, Request, Response } from 'express'
-import jwt, { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken'
+import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import { validationResult } from 'express-validator'
 
 import User from '../models/user'
 import { createHttpError } from '../util/createHttpError'
-import { dev } from '../config'
 import { handelSendEmail } from '../helper/sendEmail'
 import * as userService from '../services/userService'
-
 import { UserType } from '../types'
-import generateToken from '../util/generateToken'
+import { generateToken, verifyToken } from '../util/generateToken'
 import { deleteImage } from '../helper/deleteImage'
 
 export const processRegisterUser = async (req: Request, res: Response, next: NextFunction) => {
@@ -44,7 +42,6 @@ export const processRegisterUser = async (req: Request, res: Response, next: Nex
     if (imagePath) {
       tokenPayload.image = imagePath
     }
-    // const token = jwt.sign(tokenPayload, dev.app.jwtUserActivationKey, { expiresIn: '10m' })
     const token = generateToken(tokenPayload)
     const emailData = {
       email: email,
@@ -68,15 +65,11 @@ export const processRegisterUser = async (req: Request, res: Response, next: Nex
 export const activateUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const token = req.body.token
-
     if (!token) {
       throw createHttpError(404, `Please provide a token !`)
     }
 
-    const decoded = jwt.verify(token, dev.app.jwtUserKey)
-    if (!decoded) {
-      throw createHttpError(404, `Invalid token !`)
-    }
+    const decoded = verifyToken(token)
     await User.create(decoded)
 
     res.status(201).json({
@@ -131,6 +124,7 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
 
 export const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
+
     let page = Number(req.query.page) || 1
     const limit = Number(req.query.limit) || 3
     const sort = req.query.sort as string

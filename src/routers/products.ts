@@ -10,6 +10,7 @@ import {
 } from '../controllers/productController'
 import { uploadImageProduct } from '../middlewares/uploadFile'
 import { updateProductValidator, createProductValidator } from '../validator/productValidator'
+import { isAdmin, isLoggedIn } from '../middlewares/auth'
 
 const router = Router()
 
@@ -20,7 +21,7 @@ router.get('/', getAllProducts)
 router.get('/:slug', getProductBySlug)
 
 // DELETE : /products/:slug -> delete single product by slug
-router.delete('/:slug', deleteProductBySlug)
+router.delete('/:slug', isLoggedIn ,  isAdmin ,  deleteProductBySlug)
 
 // PUT : /products/:slug -> update product by slug
 router.put(
