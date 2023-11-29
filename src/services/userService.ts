@@ -57,12 +57,10 @@ export const getUser = async (email: string) => {
 
 export const deleteUserByEmail = async (email: string) => {
   const user = await User.findOneAndDelete({ email: email }, { password: 0, __v: 0 })
-
   // To delete the old image from the public folder
   if (user?.image !== dev.app.defaultImagePath) {
     user && fs.unlink(user.image)
   }
-
   if (!user) {
     throw createHttpError(404, `User not found with the email ${email}`)
   }
@@ -73,7 +71,6 @@ export const updateUserByEmail = async (email: string, updatedUser: IUser): Prom
   const user = await User.findOneAndUpdate({ email }, updatedUser, {
     new: true,
   })
-
   if (!user) {
     throw createHttpError(404, `User not found with the email ${email}`)
   }
@@ -83,15 +80,16 @@ export const updateUserByEmail = async (email: string, updatedUser: IUser): Prom
 export const updateBanStatus = async (email: string, isBanned: boolean) => {
   const update = { isBanned: isBanned }
   const user = await User.findOneAndUpdate({ email: email }, update, { new: true })
-
   if (!user) {
     throw createHttpError(404, `User not found with the email ${email}`)
   }
-
   return user
 }
 
-export const createTokenPayload = async (userData: IUser, imagePath?: string): Promise<UserType> => {
+export const createTokenPayload = async (
+  userData: IUser,
+  imagePath?: string
+): Promise<UserType> => {
   const { name, email, password, address, phone } = userData
   const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -101,14 +99,18 @@ export const createTokenPayload = async (userData: IUser, imagePath?: string): P
     password: hashedPassword,
     address: address,
     phone: phone,
-  };
-  if (imagePath) {
-    tokenPayload.image = imagePath;
   }
-  return tokenPayload;
-};
+  if (imagePath) {
+    tokenPayload.image = imagePath
+  }
+  return tokenPayload
+}
 
-export const createEmailData = (name: string, email: string, token: string): { email: string; subject: string; html: string } => {
+export const createEmailData = (
+  name: string,
+  email: string,
+  token: string
+): { email: string; subject: string; html: string } => {
   return {
     email: email,
     subject: '',
@@ -116,5 +118,5 @@ export const createEmailData = (name: string, email: string, token: string): { e
       <p>Please activate your account by clicking on the following link:
       <a href="http://localhost:5050/users/activate/${token} "> click here to activate </a></p>
     `,
-  };
-};
+  }
+}
