@@ -12,8 +12,8 @@ export const handleLogin = async (req: Request, res: Response, next: NextFunctio
     await authService.isPasswordMatch(user, password)
     await authService.isUserBanned(user)
 
-    const accessToken = generateToken({ _id: user._id })
-    setAccessTokenCookie(res, accessToken)
+    const accessToken = generateToken({ _id: user._id }) // Generate access token
+    setAccessTokenCookie(res, accessToken) // Set the access token in a cookie
 
     res.status(200).json({ message: 'User is logged in successfully', payload: user })
   } catch (error) {
