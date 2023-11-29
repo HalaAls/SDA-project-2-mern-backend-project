@@ -42,7 +42,7 @@ export const processRegisterUser = async (req: Request, res: Response, next: Nex
     if (imagePath) {
       tokenPayload.image = imagePath
     }
-    const token = generateToken(tokenPayload)
+    const token = generateToken(tokenPayload)// Generate activate token
     const emailData = {
       email: email,
       subject: '',
