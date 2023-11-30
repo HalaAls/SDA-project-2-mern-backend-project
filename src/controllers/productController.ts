@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from 'express'
-import slugify from 'slugify'
 import { validationResult } from 'express-validator'
+import slugify from 'slugify'
 
-import * as productService from '../services/productService'
+import { createHttpError } from '../errors/createHttpError'
 import { deleteImage } from '../helper/deleteImage'
-import { Product } from '../models/product'
-import { createHttpError } from '../util/createHttpError'
+import { Product } from '../models/productModel'
+import * as productService from '../services/productService'
 
 export const getAllProducts = async (req: Request, res: Response, next: NextFunction) => {
   try {

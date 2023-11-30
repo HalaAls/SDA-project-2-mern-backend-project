@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express'
+import { Response } from 'express'
 
 const setAccessTokenCookie = (res: Response, accessToken: string) => {
     res.cookie('accessToken', accessToken, {

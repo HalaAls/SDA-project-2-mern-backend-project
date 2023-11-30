@@ -1,6 +1,7 @@
 import { Schema, model, Document } from 'mongoose'
-import { IProduct } from './product'
-import { IUser } from './user'
+
+import { IProduct } from './productModel'
+import { IUser } from './userModel'
 
 export interface IOrderProduct {
   product: IProduct['_id']

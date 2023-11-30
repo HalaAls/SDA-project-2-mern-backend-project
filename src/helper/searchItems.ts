@@ -6,7 +6,13 @@ interface SearchOptions {
   notAdmin?: boolean
 }
 
-export const searchItems = ({ search, minPrice, maxPrice, categoryId, notAdmin }: SearchOptions) => {
+export const searchItems = ({
+  search,
+  minPrice,
+  maxPrice,
+  categoryId,
+  notAdmin,
+}: SearchOptions) => {
   const searchRegExpr = new RegExp('.*' + search + '.*', 'i')
 
   let searchObject: any = {

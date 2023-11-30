@@ -1,8 +1,8 @@
 import fs from 'fs/promises'
 import bcrypt from 'bcrypt'
 
-import User, { IUser } from '../models/user'
-import { createHttpError } from '../util/createHttpError'
+import User, { IUser } from '../models/userModel'
+import { createHttpError } from '../errors/createHttpError'
 import { dev } from '../config'
 import { sortItems } from '../helper/sortItems'
 import { UserType } from '../types'

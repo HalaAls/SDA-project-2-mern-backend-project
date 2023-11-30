@@ -4,10 +4,10 @@ import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 
 import { dev } from './config'
-import usersRouter from './routers/users'
-import productsRouter from './routers/products'
-import ordersRouter from './routers/orders'
-import categoryRouter from './routers/category'
+import usersRouter from './routers/usersRoute'
+import productsRouter from './routers/productsRoute'
+import ordersRouter from './routers/ordersRoute'
+import categoryRouter from './routers/categoryRoute'
 import authRouter from './routers/authRoute'
 
 // import apiErrorHandler from './middlewares/errorHandler'
@@ -15,7 +15,7 @@ import myLogger from './middlewares/logger'
 import { errorHandler } from './middlewares/errorHandler'
 
 import { connectDB } from './config/db'
-import { createHttpError } from './util/createHttpError'
+import { createHttpError } from './errors/createHttpError'
 
 const app: Application = express()
 const PORT: number = dev.app.port
@@ -43,7 +43,5 @@ app.use((req, res, next) => {
   next(error)
 })
 
-// ÷t have to be at the bottom of all routes so they can reach to it
+// It have to be at the bottom of all routes so they can reach to it
 app.use(errorHandler)
-
-// app.use(apiErrorHandler)

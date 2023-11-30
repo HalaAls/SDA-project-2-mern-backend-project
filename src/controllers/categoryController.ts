@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from 'express'
-import slugify from 'slugify'
-import mongoose, { ObjectId } from 'mongoose'
-
-import { createHttpError } from '../util/createHttpError'
-import * as categoryService from '../services/categoryService'
 import { validationResult } from 'express-validator'
+import mongoose from 'mongoose'
+import slugify from 'slugify'
+
+import { createHttpError } from '../errors/createHttpError'
+import * as categoryService from '../services/categoryService'
 
 export const getAllCategories = async (req: Request, res: Response, next: NextFunction) => {
   try {

@@ -1,8 +1,7 @@
 import slugify from 'slugify'
-import { ObjectId } from 'mongodb'
 
-import { Category, ICategory } from '../models/category'
-import { createHttpError } from '../util/createHttpError'
+import { Category, ICategory } from '../models/categoryModel'
+import { createHttpError } from '../errors/createHttpError'
 import { sortItems } from '../helper/sortItems'
 import { searchItems } from '../helper/searchItems'
 

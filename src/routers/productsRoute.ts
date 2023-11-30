@@ -1,4 +1,3 @@
-//productsRouter.ts
 import { Router } from 'express'
 
 import {
@@ -21,17 +20,19 @@ router.get('/', getAllProducts)
 router.get('/:slug', getProductBySlug)
 
 // DELETE : /products/:slug -> delete single product by slug
-router.delete('/:slug', isLoggedIn ,  isAdmin ,  deleteProductBySlug)
+router.delete('/:slug', isLoggedIn, isAdmin, deleteProductBySlug)
 
 // PUT : /products/:slug -> update product by slug
 router.put(
   '/:slug',
+  isLoggedIn,
+  isAdmin,
   uploadImageProduct.single('image'),
   updateProductValidator,
   updateProductBySlug
 )
 
 // POST : /products -> create a new product
-router.post('/', uploadImageProduct.single('image'), createProductValidator, createProduct)
+router.post('/', isLoggedIn ,  isAdmin , uploadImageProduct.single('image'), createProductValidator, createProduct)
 
 export default router

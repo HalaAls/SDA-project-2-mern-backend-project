@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt'
 
-import User, { IUser } from '../models/user'
-import { createHttpError } from '../util/createHttpError'
+import User, { IUser } from '../models/userModel'
+import { createHttpError } from '../errors/createHttpError'
 
 export const findUserByEmail = async (email: string) => {
   const user = await User.findOne({ email })

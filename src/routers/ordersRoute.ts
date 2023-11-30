@@ -1,5 +1,4 @@
 import express from 'express'
-const router = express.Router()
 
 import {
   handleProcessPayment,
@@ -9,9 +8,11 @@ import {
 } from '../controllers/orderController'
 import { isAdmin, isLoggedIn } from '../middlewares/auth'
 
+const router = express.Router()
+
 router.get('/all-orders', isLoggedIn, isAdmin, getAllOrdersForAdmin)
 router.post('/process-payment', isLoggedIn, handleProcessPayment)
 router.get('/:id([0-9a-fA-F]{24})', getOrderForUser)
-router.put('/:id([0-9a-fA-F]{24})', updateOrderStatus)
+router.put('/:id([0-9a-fA-F]{24})', isLoggedIn, isAdmin, updateOrderStatus)
 
 export default router

@@ -13,7 +13,11 @@ const createStorage = (destination: string) => {
 }
 
 export const uploadImage = (destination: string) =>
-  multer({ storage: createStorage(destination), fileFilter: fileFilter, limits: { fileSize: 1024 * 1024 * 5 }})
+  multer({
+    storage: createStorage(destination),
+    fileFilter: fileFilter,
+    limits: { fileSize: 1024 * 1024 * 5 },
+  })
 
 const fileFilter = (req: Request, file: Express.Multer.File, cb: FileFilterCallback) => {
   const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg']

@@ -1,11 +1,11 @@
 import { Schema, model } from 'mongoose'
-//test
+
 export interface ICategory extends Document {
   _id: string
   name: string
   slug: string
-  createdAt?: string
-  updatedAt?: string
+  createdAt?: Date
+  updatedAt?: Date
   _v: number
 }
 

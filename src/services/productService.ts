@@ -1,8 +1,8 @@
 import slugify from 'slugify'
 
 import { sortItems } from '../helper/sortItems'
-import { Product, IProduct } from '../models/product'
-import { createHttpError } from '../util/createHttpError'
+import { Product, IProduct } from '../models/productModel'
+import { createHttpError } from '../errors/createHttpError'
 import { deleteImage } from '../helper/deleteImage'
 import { searchItems } from '../helper/searchItems'
 
@@ -53,12 +53,13 @@ export const getProducts = async (
 }
 
 export const findProductsBySlug = async (slug: string): Promise<IProduct> => {
-  const product = await Product.findOne({ slug: slug })
+  const product = await Product.findOne({ slug: slug }).populate('category', '_id name slug')
 
   if (!product) {
     throw createHttpError(404, 'Product Not found')
   }
   return product
+
 }
 
 export const removeProductsBySlug = async (slug: string) => {

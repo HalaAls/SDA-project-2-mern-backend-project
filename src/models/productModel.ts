@@ -1,6 +1,6 @@
 //productModel.ts
 import { Schema, model, Document } from 'mongoose'
-import { ICategory } from './category'
+import { ICategory } from './categoryModel'
 
 export interface IProduct extends Document {
   name: string
@@ -10,8 +10,8 @@ export interface IProduct extends Document {
   price: number
   image: string
   category: ICategory['_id']
-  createdAt?: string
-  updatedAt?: string
+  createdAt?: Date
+  updatedAt?: Date
 }
 
 const productSchema = new Schema(

@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 
 import { dev } from '../config'
 import { TokenPayload } from '../types'
-import { createHttpError } from './createHttpError'
+import { createHttpError } from '../errors/createHttpError'
 
 // Function to generate a JSON Web Token (JWT) based on a token payload and optional expiration time
 export const generateToken = (tokenPayload: TokenPayload, expiresIn = ''): string => {
