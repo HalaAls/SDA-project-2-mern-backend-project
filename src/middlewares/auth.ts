@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 import { JwtPayload } from 'jsonwebtoken'
 
 import { createHttpError } from '../util/createHttpError'
-import { verifyToken } from '../util/generateToken'
+import { verifyToken } from '../util/jsonWebToken'
 import User from '../models/user'
 
 interface CustomRequest extends Request {

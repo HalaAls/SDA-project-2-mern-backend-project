@@ -1,12 +1,13 @@
 import { NextFunction, Request, Response } from 'express'
-import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken'
+import { JsonWebTokenError, JwtPayload, TokenExpiredError } from 'jsonwebtoken'
 import { validationResult } from 'express-validator'
+import bcrypt from 'bcrypt'
 
 import User from '../models/user'
 import { createHttpError } from '../util/createHttpError'
 import { handelSendEmail } from '../helper/sendEmail'
 import * as userService from '../services/userService'
-import { generateToken, verifyToken } from '../util/generateToken'
+import { generateToken, verifyToken } from '../util/jsonWebToken'
 import { deleteImage } from '../helper/deleteImage'
 
 export const processRegisterUser = async (req: Request, res: Response, next: NextFunction) => {
@@ -33,7 +34,7 @@ export const processRegisterUser = async (req: Request, res: Response, next: Nex
     const tokenPayload = await userService.createTokenPayload(req.body, imagePath)
     const token = generateToken(tokenPayload)
 
-    const emailData = await userService.createEmailData(name, email, token)
+    const emailData = await userService.createEmailData(name, email, token ,'activate')
     await handelSendEmail(emailData)
 
     res.status(200).json({
@@ -207,3 +208,43 @@ export const unBanUser = async (req: Request, res: Response, next: NextFunction)
     next(error)
   }
 }
+
+export const forgetPassword = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const {email} = req.body
+    const user = await User.findOne({ email: email });
+    if (!user) {
+    throw createHttpError(409, `User does not exists with the email ${email}. Please register yourself first`);
+    } 
+    const token = generateToken({email})
+
+    const emailData = await userService.createEmailData(user.name, email, token ,"reset-password")
+    await handelSendEmail(emailData)
+
+    res.status(200).json({
+      message: 'Check your email to reset your password',
+      token: token,
+    })
+    
+  } catch (error) {
+    next(error)
+  }
+}
+export const resetPassword = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const {token , password} = req.body
+    const decoded = verifyToken(token) as JwtPayload
+    const updatePassowrd = await User.findOneAndUpdate({email: decoded.email} , {$set: {password: bcrypt.hashSync(password, 10)}})
+    
+    if(!updatePassowrd){
+      throw createHttpError(400, `Reset your password was unsuccessfully with the email ${decoded.email}`)
+    }
+    res.status(200).json({
+      message: 'Reset your password was successfully',
+    })
+    
+  } catch (error) {
+    next(error)
+  }
+}
+

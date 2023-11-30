@@ -109,14 +109,31 @@ export const createTokenPayload = async (
 export const createEmailData = (
   name: string,
   email: string,
-  token: string
+  token: string,
+  type: string
 ): { email: string; subject: string; html: string } => {
-  return {
-    email: email,
-    subject: '',
-    html: `<h1> Hello ${name} </h1> 
-      <p>Please activate your account by clicking on the following link:
-      <a href="http://localhost:5050/users/activate/${token} "> click here to activate </a></p>
-    `,
+
+  let subject: string;
+  let html: string;
+    switch (type) {
+    case 'activate':
+      subject = 'Activate your account';
+      html = `<h1> Hello ${name} </h1> 
+        <p>Please click here to:
+        <a href="http://localhost:5050/users/activate/${token} "> activate your account </a></p>`;
+      break;
+
+    case 'reset-password':
+      subject = 'Reset Password Email';
+      html = `<h1> Hello ${name} </h1> 
+        <p>Please click here to:
+        <a href="http://localhost:5050/users/forget-password/${token} "> reset your password</a></p>`;
+      break;
+
+    default:
+      throw new Error('Invalid email type');
   }
+
+  return { email, subject, html };
 }
+

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 
 import * as authService from '../services/authService'
-import { generateToken } from '../util/generateToken'
+import { generateToken } from '../util/jsonWebToken'
 import setAccessTokenCookie from '../util/cookieUtils'
 
 export const handleLogin = async (req: Request, res: Response, next: NextFunction) => {

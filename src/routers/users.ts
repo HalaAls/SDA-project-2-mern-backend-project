@@ -10,6 +10,8 @@ import {
   activateUser,
   banUser,
   unBanUser,
+  forgetPassword,
+  resetPassword
 } from '../controllers/userController'
 import { uploadImageUser } from '../middlewares/uploadFile'
 import { userValidator } from '../validator/userValidator'
@@ -26,6 +28,8 @@ router.post(
 )
 router.post('/activate', activateUser)
 router.post('/', uploadImageUser.single('image'), userValidator, createUser)
+router.post('/forget-password', isLoggedOut, forgetPassword)
+router.put('/reset-password', isLoggedOut, resetPassword)
 
 router.get('/', isLoggedIn, getAllUsers)
 router.get('/:email', isLoggedIn, isAdmin, getSingleUser)
