@@ -56,3 +56,4 @@ Method: POST, Path: /api/users/process-register, Date: 11/30/2023, Time: 10:00:1
 Method: POST, Path: /api/users/process-register, Date: 11/30/2023, Time: 10:00:37 AM
 Method: POST, Path: /api/users/activate/, Date: 11/30/2023, Time: 10:00:56 AM
 Method: POST, Path: /api/users/activate/, Date: 11/30/2023, Time: 10:01:02 AM
+Method: POST, Path: /api/users, Date: 11/30/2023, Time: 7:28:20 PM
