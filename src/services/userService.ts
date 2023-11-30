@@ -6,6 +6,7 @@ import { createHttpError } from '../util/createHttpError'
 import { dev } from '../config'
 import { sortItems } from '../helper/sortItems'
 import { UserType } from '../types'
+import { searchItems } from '../helper/searchItems'
 
 export const getUsers = async (page = 1, limit = 3, sort: string, search = '') => {
   const count = await User.countDocuments()
@@ -21,15 +22,10 @@ export const getUsers = async (page = 1, limit = 3, sort: string, search = '') =
     skip = (page - 1) * limit
   }
 
-  const searchRegExpr = new RegExp('.*' + search + '.*', 'i')
-  let filterUsers = {
-    isAdmin: { $ne: true },
-    $or: [
-      { name: { $regex: searchRegExpr } },
-      { email: { $regex: searchRegExpr } },
-      { phone: { $regex: searchRegExpr } },
-    ],
-  }
+  // search AND filter by price, by categoryid
+  const notAdmin = true
+  const filterUsers = searchItems({ search, notAdmin })
+
   let filterOptions = { password: 0, __v: 0 }
 
   // sort by name, by date Added
