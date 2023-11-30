@@ -110,3 +110,5 @@ Method: POST, Path: /api/orders/6568c32977c6b53e91187d18, Date: 11/30/2023, Time
 Method: POST, Path: /api/orders/6568c32977c6b53e91187d18, Date: 11/30/2023, Time: 11:38:13 PM
 Method: GET, Path: /api/orders/6568c32977c6b53e91187d18, Date: 11/30/2023, Time: 11:38:41 PM
 Method: GET, Path: /api/orders/all-orders, Date: 11/30/2023, Time: 11:39:40 PM
+Method: PUT, Path: /api/orders/6568f13ce875e2abf31e9c61, Date: 12/1/2023, Time: 12:05:52 AM
+Method: PUT, Path: /api/orders/6568f13ce875e2abf31e9c61, Date: 12/1/2023, Time: 12:08:30 AM

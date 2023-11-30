@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import { IOrder, IOrderProduct, Order } from '../models/order'
 import { populate } from 'dotenv'
+import { createHttpError } from '../util/createHttpError'
 
 interface CustomRequest extends Request {
   userId?: string
@@ -62,3 +63,23 @@ export const getOrderForUser = async (req: CustomRequest, res: Response, next: N
     next(error)
   }
 }
+
+export const updateOrderStatus = async (req: CustomRequest, res: Response, next: NextFunction) => {
+    try {
+      const orderId = req.params.id
+      const {status} = req.body
+      const updateStatus= await Order.findOneAndUpdate({_id: orderId } , {$set: {status: status}}, { new: true })
+      
+      if(!updateStatus){
+        throw createHttpError(400, `Updated status was unsuccessfully with the status ${status}`)
+      }
+      res.status(200).json({
+        message: 'The status was updated successfully',
+        payload: updateStatus
+      })
+      
+    } catch (error) {
+      next(error)
+    }
+  }
+  
