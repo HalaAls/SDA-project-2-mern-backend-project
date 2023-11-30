@@ -1,20 +1,43 @@
-import mongoose, { Document } from 'mongoose'
+import { Schema, model, Document } from 'mongoose'
+import { IProduct } from './product'
+import { IUser } from './user'
 
-export type OrderDocument = Document & {
-  name: string
-  products: mongoose.Schema.Types.ObjectId[]
+export interface IOrderProduct {
+  product: IProduct['_id']
+  quantity: number
 }
 
-const orderSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  products: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: 'Product',
-  },
-},
-{ timestamps: true })
+export interface IOrderPayment {}
 
-export default mongoose.model<OrderDocument>('Order', orderSchema)
+export interface IOrder extends Document {
+  products: IOrderProduct[]
+  payment: IOrderPayment
+  buyer: IUser['_id']
+  status: 'Not Processed' | 'Processing' | 'Shipped' | 'Delivered' | 'Canceled'
+}
+
+const orderSchema = new Schema<IOrder>(
+  {
+    products: [
+      {
+        product: {
+          type: Schema.Types.ObjectId,
+          ref: 'Product',
+          required: true,
+        },
+        quantity: { type: Number, required: true, trim: true },
+      },
+    ],
+    payment: { type: Object, required: true },
+    buyer: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    status: {
+      type: String,
+      enum: ['Not Processed', 'Processing', 'Shipped', 'Delivered', 'Canceled'],
+      default: 'Not Processed',
+    },
+  },
+  { timestamps: true }
+)
+
+export const Order = model<IOrder>('Order', orderSchema)
+
