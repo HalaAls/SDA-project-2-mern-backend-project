@@ -32,7 +32,7 @@ export const processRegisterUser = async (req: Request, res: Response, next: Nex
 
     // User doesn't exist, continue with registration process
     const tokenPayload = await userService.createTokenPayload(req.body, imagePath)
-    const token = generateToken(tokenPayload)
+    const token = generateToken(tokenPayload , '1d')
 
     const emailData = await userService.createEmailData(name, email, token ,'activate')
     await handelSendEmail(emailData)
@@ -216,7 +216,7 @@ export const forgetPassword = async (req: Request, res: Response, next: NextFunc
     if (!user) {
     throw createHttpError(409, `User does not exists with the email ${email}. Please register yourself first`);
     } 
-    const token = generateToken({email})
+    const token = generateToken({email} , '10m')
 
     const emailData = await userService.createEmailData(user.name, email, token ,"reset-password")
     await handelSendEmail(emailData)

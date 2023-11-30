@@ -4,12 +4,21 @@ import { dev } from '../config'
 import { TokenPayload } from '../types'
 import { createHttpError } from './createHttpError'
 
-export const generateToken = (payload: TokenPayload): string => {
-  return jwt.sign(payload, dev.app.jwtUserKey, {
-    expiresIn: '10m',
-  })
+// Function to generate a JSON Web Token (JWT) based on a token payload and optional expiration time
+export const generateToken = (tokenPayload: TokenPayload, expiresIn = ''): string => {
+  try {
+    if (!tokenPayload || Object.keys(tokenPayload).length === 0) {
+      throw new Error('tokenPayload must be a non-empty object')
+    }
+    const token = jwt.sign(tokenPayload, dev.app.jwtUserKey, {
+      expiresIn: expiresIn,
+    })
+    return token
+  } catch (error) {
+    throw error
+  }
 }
-
+// Function to verify the validity of a JWT and decode its payload
 export const verifyToken = (token: string) => {
   const decoded = jwt.verify(token, dev.app.jwtUserKey)
   if (!decoded) {
@@ -18,16 +27,23 @@ export const verifyToken = (token: string) => {
   return decoded
 }
 
-// export const createJSONWebToken = (tokenPayload: object, secretKey: string, expiresIn = '') => {
-//   try {
-//     const token = jwt.sign(tokenPayload, secretKey, {
-//       expiresIn: expiresIn,
-//     })
-//     return token
-//   } catch (error) {
-//     throw new Error('tokenPayload must be a non-empty object')
-//   }
-// }
+// Function to create a JSON Web Token (JWT) with a custom secret key and optional expiration time
+export const createJSONWebToken = (tokenPayload: object, secretKey: string, expiresIn = '') => {
+  try {
+    if (!tokenPayload || Object.keys(tokenPayload).length === 0) {
+      throw new Error('tokenPayload must be a non-empty object')
+    }
+    if (typeof secretKey !== 'string' || secretKey === '') {
+      throw new Error('secretKey must be a non-empty string')
+    }
+    const token = jwt.sign(tokenPayload, secretKey, {
+      expiresIn: expiresIn,
+    })
+    return token
+  } catch (error) {
+    throw error
+  }
+}
 
 // export const verifyJSONWebToken = (token: string, secretKey: string) => {
 //   try {
