@@ -40,3 +40,4 @@ const orderSchema = new Schema<IOrder>(
 )
 
 export const Order = model<IOrder>('Order', orderSchema)
+

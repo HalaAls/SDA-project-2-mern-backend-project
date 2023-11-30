@@ -1,10 +1,15 @@
 import express from 'express'
 const router = express.Router()
 
-import { handleProcessPayment, getAllOrders } from '../controllers/orderController' 
-import { isLoggedIn, isLoggedOut } from '../middlewares/auth'
+import {
+  handleProcessPayment,
+  getAllOrdersForAdmin,
+  getOrderForUser,
+} from '../controllers/orderController'
+import { isAdmin, isLoggedIn } from '../middlewares/auth'
 
-router.get('/', getAllOrders)
-router.post('/process-payment', isLoggedIn, isLoggedOut, handleProcessPayment)
+router.get('/all-orders', isLoggedIn, isAdmin, getAllOrdersForAdmin)
+router.post('/process-payment', isLoggedIn, handleProcessPayment)
+router.get('/:id([0-9a-fA-F]{24})', getOrderForUser)
 
 export default router
