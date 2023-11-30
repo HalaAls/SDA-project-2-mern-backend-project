@@ -33,12 +33,7 @@ export const getAllCategories = async (req: Request, res: Response, next: NextFu
       })
     }
   } catch (error) {
-    if (error instanceof mongoose.Error.CastError) {
-      const error = createHttpError(400, 'id format is not valid')
-      next(error)
-    } else {
-      next(error)
-    }
+    next(error)
   }
 }
 
@@ -51,7 +46,12 @@ export const getCategoryById = async (req: Request, res: Response, next: NextFun
       payload: category,
     })
   } catch (error) {
-    next(error)
+    if (error instanceof mongoose.Error.CastError) {
+      const error = createHttpError(400, 'id format is not valid')
+      next(error)
+    } else {
+      next(error)
+    }
   }
 }
 
@@ -95,7 +95,12 @@ export const deleteCategoryById = async (req: Request, res: Response, next: Next
       payload: responce,
     })
   } catch (error) {
-    next(error)
+    if (error instanceof mongoose.Error.CastError) {
+      const error = createHttpError(400, 'id format is not valid')
+      next(error)
+    } else {
+      next(error)
+    }
   }
 }
 
@@ -135,7 +140,12 @@ export const updateCategoryById = async (req: Request, res: Response, next: Next
       payload: category,
     })
   } catch (error) {
-    next(error)
+    if (error instanceof mongoose.Error.CastError) {
+      const error = createHttpError(400, 'id format is not valid')
+      next(error)
+    } else {
+      next(error)
+    }
   }
 }
 
