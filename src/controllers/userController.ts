@@ -24,7 +24,7 @@ export const processRegisterUser = async (req: Request, res: Response, next: Nex
 
     // Check for validation errors
     const errors = validationResult(req)
-    if (!errors.isEmpty()) {
+    if (!errors.isEmpty()) { 
       // test this case
       imagePath && deleteImage(imagePath, 'users')
       return res.status(400).json({ errors: errors.array() })
@@ -87,11 +87,11 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
 
     const { name, email, password, address, phone } = req.body
     const imagePath = req.file?.path
-
+    const hashedPassword = await bcrypt.hash(password, 10)
     const newUser = new User({
       name: name,
       email: email,
-      password: password,
+      password: hashedPassword,
       address: address,
       phone: phone,
       image: imagePath,
