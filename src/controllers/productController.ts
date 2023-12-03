@@ -84,11 +84,11 @@ export const updateProductBySlug = async (req: Request, res: Response, next: Nex
 
     const updatedProduct = { ...req.body, image: req.file?.path }
 
-    const productExists = await Product.exists({ slug: req.body.slug })
+    const productExists = await Product.findOne({ slug: req.body.slug })
 
-    if (productExists) {
+    if (productExists && name !== productExists.name) {
       updatedProduct.image && deleteImage(updatedProduct.image, 'products')
-      throw createHttpError(409, 'Product already exists')
+      throw createHttpError(409, 'Product name is already exists')
     }
 
     // Validation checks using express-validator
