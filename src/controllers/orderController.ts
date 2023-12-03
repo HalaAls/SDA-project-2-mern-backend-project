@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 
 import { IOrder, IOrderProduct, Order } from '../models/orderModel'
 import { createHttpError } from '../errors/createHttpError'
+import * as orderServices from '../services/orderServices'
 
 interface CustomRequest extends Request {
   userId?: string
@@ -13,12 +14,7 @@ export const getAllOrdersForAdmin = async (
   next: NextFunction
 ) => {
   try {
-    const orders = await Order.find()
-      .populate({
-        path: 'products',
-        populate: { path: 'product', select: 'name price category quantity' },
-      })
-      .populate('buyer', 'name email phone')
+    const orders = await orderServices.getAllOrders();
     res.send({ message: 'Orders are returned for the admin', payload: orders })
   } catch (error) {
     next(error)
@@ -52,12 +48,7 @@ export const handleProcessPayment = async (
 export const getOrderForUser = async (req: CustomRequest, res: Response, next: NextFunction) => {
   try {
     const userId = req.params.id
-    const orders = await Order.find({ buyer: userId })
-      .populate({
-        path: 'products',
-        populate: { path: 'product', select: 'name price category quantity' },
-      })
-      .populate('buyer', 'name email phone')
+    const orders = await orderServices.getOrderById(userId);
     res.send({ message: 'Orders are returned for the user', payload: orders })
   } catch (error) {
     next(error)
