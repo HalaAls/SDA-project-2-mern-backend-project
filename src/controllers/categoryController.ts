@@ -109,7 +109,7 @@ export const deleteCategoryBySlug = async (req: Request, res: Response, next: Ne
     const requestedSlug = req.params.slug
     const responce = await categoryService.removeCategoryBySlug(requestedSlug)
     res.status(200).send({
-      message: 'product is deleted',
+      message: 'category is deleted',
       payload: responce,
     })
   } catch (error) {
@@ -169,7 +169,7 @@ export const updateCategoryBySlug = async (req: Request, res: Response, next: Ne
     const category = await categoryService.updateCategorySlug(requestedSlug, updatedCategory)
 
     res.status(200).send({
-      message: 'return the updated products',
+      message: 'return the updated category',
       payload: category,
     })
   } catch (error) {
